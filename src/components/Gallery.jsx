@@ -67,6 +67,7 @@ const Images = (props) => {
     </Box>
   ) : (
     <Box
+    data-aos="fade-down-left"
       sx={{
         width: "90vw",
         marginBottom: "1em",
@@ -76,15 +77,18 @@ const Images = (props) => {
       }}
     >
       <Masonry
+     
         columns={props.columns || { xs: 4, sm: 5, md: 10, lg: 15 }}
         spacing={{ xs: 1, sm: 2, md: 2 }}
       >
         {images.map((item, index) => (
-          <MasonryItem key={index}>
+          <MasonryItem  className="animate__animated animate__fadeInRightBig"  key={index} >
             <img
+        
               src={`${item.original}`}
               alt={item.title}
               onClick={(e) => props.history.push(`/artifact/${item.id}`)}
+             
             />
           </MasonryItem>
         ))}

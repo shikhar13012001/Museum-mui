@@ -17,7 +17,7 @@ const Artwork = (props) => {
       <h1 style={{ fontWeight: 100,textAlign:"center" }}>{name}</h1>
       <span>{date}</span>
       <p style={{ width: "80%", marginTop: "2em" }}>{desc}</p>
-      <h3>Explore artist</h3>
+      <h3 >Explore artist</h3>
       <div
         style={{
           width: "40vw",

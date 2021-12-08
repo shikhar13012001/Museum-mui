@@ -6,7 +6,11 @@ import Divider from "@mui/material/Divider";
 import Button from "@mui/material/Button";
 const CardComponent = () => {
   return (
-    <Container sx={{ marginTop: "4em" }}>
+    <Container
+      sx={{ marginTop: "4em" }}
+      data-aos="fade-up"
+      data-aos-anchor-placement="top-bottom"
+    >
       <h1
         style={{
           fontSize: "54px",
@@ -65,7 +69,10 @@ const CardComponent = () => {
               fontFamily: "Allerta",
               backgroundColor: "#0307fc",
             }}
-            onClick={()=>window.location.href=('https://www.metmuseum.org/visit/plan-your-visit')}
+            onClick={() =>
+              (window.location.href =
+                "https://www.metmuseum.org/visit/plan-your-visit")
+            }
           >
             RSVP Now!
           </Button>
@@ -77,9 +84,11 @@ const CardComponent = () => {
               fontFamily: "Allerta",
               backgroundColor: "black",
             }}
-            onClick={()=>window.location.href=('https://www.metmuseum.org/visit/plan-your-visit')}
-          > 
-
+            onClick={() =>
+              (window.location.href =
+                "https://www.metmuseum.org/visit/plan-your-visit")
+            }
+          >
             Plan A team Visit
           </Button>
         </Grid>
