@@ -14,7 +14,7 @@ const Images = (props) => {
   }, [props]);
   const FetchData = async () => {
     //departments
-    
+
     try {
       setIsLoaded(false);
       const res = await fetch(
@@ -23,12 +23,12 @@ const Images = (props) => {
       const data = await res.json();
       let images_collect = [];
       for (let i = 0; i < Math.min(data.objectIDs.length, 30); i++) {
-        try { 
+        try {
           let img = await fetch(
             `https://afternoon-bayou-41725.herokuapp.com/object/${data.objectIDs[i]}`
           );
-         const temp= await img.json();
-        
+          const temp = await img.json();
+
           if (!temp || !temp.objectID) {
             img = await fetch(
               `https://collectionapi.metmuseum.org/public/collection/v1/objects/${data.objectIDs[i]}`
@@ -37,8 +37,8 @@ const Images = (props) => {
               `https://afternoon-bayou-41725.herokuapp.com/upload/${data.objectIDs[i]}`
             );
           }
-          const img_data = temp&&temp.objectID?temp:(await img.json());
- 
+          const img_data = temp && temp.objectID ? temp : await img.json();
+
           const obj = {
             original: img_data.primaryImageSmall,
             thumbnail: img_data.primaryImageSmall,
@@ -67,7 +67,6 @@ const Images = (props) => {
     </Box>
   ) : (
     <Box
-    data-aos="fade-down-left"
       sx={{
         width: "90vw",
         marginBottom: "1em",
@@ -77,18 +76,15 @@ const Images = (props) => {
       }}
     >
       <Masonry
-     
         columns={props.columns || { xs: 4, sm: 5, md: 10, lg: 15 }}
         spacing={{ xs: 1, sm: 2, md: 2 }}
       >
         {images.map((item, index) => (
-          <MasonryItem  className="animate__animated animate__fadeInRightBig"  key={index} >
+          <MasonryItem key={index}>
             <img
-        
               src={`${item.original}`}
               alt={item.title}
               onClick={(e) => props.history.push(`/artifact/${item.id}`)}
-             
             />
           </MasonryItem>
         ))}

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router";
-import Loading from "../components/loading";
-import Header from "../components/header";
+import Loading from "../components/loading"; 
 import data from "../Artist.config.data";
 import Details from "../components/Details";
 import Gallery from "../components/Gallery";

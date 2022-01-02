@@ -3,13 +3,13 @@ import Container from "@mui/material/Container";
 import Divider from "@mui/material/Divider";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
-import ReactPlayer from "react-player"; 
+import ReactPlayer from "react-player";
 import { withRouter } from "react-router-dom";
 
 const style = {
-  fontFamily: "'Allerta', sans-serif",
+  fontFamily: "'Vujahday Script', cursive",
   fontWeight: 100,
-  fontSize: "54px",
+  fontSize: "8em",
   marginBottom: "1em",
 };
 const History = (props) => {

@@ -1,20 +1,15 @@
 :root {
-    --size: 1;
-    --background: #000;
-    --color1: #d25778;
-    --color2: #ec585c;
-    --color3: #e7d155;
-    --color4: #56a8c6;
-  }
-  
- 
-  
-  .ticket-visual_visual {
-    width: 100%;
-    height: auto;
-    /* margin: 100px auto; */
-    position: relative;
-   
-  }
+  --size: 1;
+  --background: #000;
+  --color1: #d25778;
+  --color2: #ec585c;
+  --color3: #e7d155;
+  --color4: #56a8c6;
+}
 
-  
+.ticket-visual_visual {
+  width: 100%;
+  height: auto;
+  /* margin: 100px auto; */
+  position: relative;
+}

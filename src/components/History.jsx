@@ -4,9 +4,9 @@ import Divider from "@mui/material/Divider";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 const style = {
-  fontFamily: "'Allerta', sans-serif",
+  fontFamily: "'Vujahday Script', cursive",
   fontWeight: 100,
-  fontSize: "54px",
+  fontSize: "6em",
   marginBottom: "1em",
 };
 const History = (props) => {

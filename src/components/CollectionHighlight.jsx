@@ -20,14 +20,14 @@ const Genre = (props) => {
         }`
       );
       const datum = await res.json();
-      
+
       for (let j = 0; j < Math.min(datum.total, 15); j++) {
         try {
           let img = await fetch(
             `https://afternoon-bayou-41725.herokuapp.com/object/${datum.objectIDs[j]}`
           );
-         const temp= await img.json();
-        
+          const temp = await img.json();
+
           if (!temp || !temp.objectID) {
             img = await fetch(
               `https://collectionapi.metmuseum.org/public/collection/v1/objects/${datum.objectIDs[j]}`
@@ -36,16 +36,14 @@ const Genre = (props) => {
               `https://afternoon-bayou-41725.herokuapp.com/upload/${datum.objectIDs[j]}`
             );
           }
-          const r = temp&&temp.objectID?temp:(await img.json());
- 
+          const r = temp && temp.objectID ? temp : await img.json();
+
           gallery.push({
             image: r.primaryImage,
             id: datum.objectIDs[j],
             item: r,
           });
-        } catch (e) {
-        
-        }
+        } catch (e) {}
       }
 
       setData(gallery);
