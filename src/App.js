@@ -33,7 +33,7 @@ function App() {
   };
 
   React.useEffect(() => {
-    FetchUser();
+    FetchUser(); 
   }, [auth]);
   return (
     User && (

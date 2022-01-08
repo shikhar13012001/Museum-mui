@@ -7,6 +7,7 @@ import LinkIcon from "@mui/icons-material/Link";
 import Chip from "@mui/material/Chip";
 import { Context } from "../Context/AuthContext";
 import BookmarkAddedIcon from "@mui/icons-material/BookmarkAdded";
+import { withRouter } from "react-router-dom";
 const Line = (props) => (
   <div
     style={{
@@ -18,13 +19,12 @@ const Line = (props) => (
     }}
   ></div>
 );
-const Details = ({ artifact }) => {
+const Details = (props) => {
+  const { artifact } = props;
   const [Likes, setLikes] = React.useState(0);
-
   const [context, setContext] = React.useContext(Context);
-  console.log("context",  (artifact.objectID.toString()));
   const [isBookmarked, setBookmarked] = React.useState(
-    context.user.liked.includes((artifact.objectID.toString()))
+    context.user.liked.includes(artifact.objectID.toString()) || false
   );
 
   const handleLike = async () => {
@@ -35,20 +35,23 @@ const Details = ({ artifact }) => {
       });
       // eslint-disable-next-line
       setLikes(Likes + 1);
-
+      // eslint-disable-next-line
       const res = await Like.json();
     } catch (e) {}
   };
   React.useEffect(() => {
     FetchData();
-  });
+    // eslint-disable-next-line
+  }, [artifact.objectID]);
   const FetchData = async () => {
     const res = await fetch(`${Server}/product/${artifact.objectID}`, {
       method: "GET",
       credentials: "include",
     });
+
     const data = await res.json();
     setLikes(data.likes);
+    setBookmarked(context.user.liked.includes(artifact.objectID.toString()));
   };
   const handleAddtoBookmark = async () => {
     const res = await fetch(`${Server}/saveart/${artifact.objectID}`, {
@@ -95,24 +98,48 @@ const Details = ({ artifact }) => {
           avatar={
             <ThumbUpIcon
               onClick={handleLike}
-              sx={{ fill: "#4d4b5c", cursor: "pointer" }}
+              sx={{
+                fill: "#4d4b5c",
+                cursor: "pointer",
+                width: "40px",
+                height: "40px",
+              }}
             />
           }
           label={Likes}
         />
         {isBookmarked ? (
-          <BookmarkAddedIcon sx={{ fill: "#4d4b5c", cursor: "pointer" }} />
+          <BookmarkAddedIcon
+            sx={{
+              fill: "#4d4b5c",
+              cursor: "pointer",
+              width: "40px",
+              height: "40px",
+            }}
+          />
         ) : (
           <BookmarkAddIcon
             onClick={handleAddtoBookmark}
-            sx={{ fill: "#4d4b5c", cursor: "pointer" }}
+            sx={{
+              fill: "#4d4b5c",
+              cursor: "pointer",
+              width: "40px",
+              height: "40px",
+            }}
           />
         )}
-        <LinkIcon sx={{ fill: "#004eba", cursor: "pointer" }} />
+        <LinkIcon
+          sx={{
+            fill: "#004eba",
+            cursor: "pointer",
+            width: "40px",
+            height: "40px",
+          }}
+        />
       </Stack>
       <Line />
     </div>
   );
 };
 
-export default Details;
+export default withRouter(Details);
