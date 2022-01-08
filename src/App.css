@@ -2,10 +2,10 @@
 @import "~react-image-gallery/styles/css/image-gallery.css";
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Allerta&display=swap"); 
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Vujahday+Script&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Luxurious+Roman&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Allerta&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Vujahday+Script&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Luxurious+Roman&display=swap");
 * {
   font-weight: 100;
   margin: 0;
@@ -424,64 +424,62 @@ iframe {
   justify-content: center;
   align-items: center;
 }
-.mask1{
+.mask1 {
   background: url("./assests/mask.png"), black;
   background-clip: text;
   color: transparent;
-  font-family: 'Bebas Neue', cursive;
-  font-size:14em;
+  font-family: "Bebas Neue", cursive;
+  font-size: 14em;
   pointer-events: none;
-  
+
 }
-.rc-footer-bottom-container{
-  color:white;
+.rc-footer-bottom-container {
+  color: white;
 }
-.image-wrapper{
+.image-wrapper {
   background-image: url("./assests/mockUp.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  width:15em;
-  height:30em;
-  object-fit:contain;
-  overflow:hidden;
-  
-
+  width: 15em;
+  height: 30em;
+  object-fit: contain;
+  overflow: hidden;
 }
-.mockUp{
+.mockUp {
   background-image: url("./assests/PhoneVisual.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  width:15em; 
-  height:30em;
-  object-fit:contain;
-  z-index:2;
-  border-radius:20px;
-  transition:background-image 1s ease-in;
+  width: 15em;
+  height: 30em;
+  object-fit: contain;
+  z-index: 2;
+  border-radius: 20px;
+  transition: background-image 1s ease-in;
 }
-.mockUp:hover{
-background-image: url("https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/966ba161210867.5a67427cb173a.jpg");
+.mockUp:hover {
+  background-image: url("https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/966ba161210867.5a67427cb173a.jpg");
 }
-.app-detail>h1{
-  font-size:3em;
-  width:8em;
-  font-family: 'Vujahday Script', cursive;
+.app-detail > h1 {
+  font-size: 3em;
+  width: 8em;
+  font-family: "Vujahday Script", cursive;
 }
-.app-detail>p{
-  font-family: 'Luxurious Roman', cursive;
-  width:20em;
+.app-detail > p {
+  font-family: "Luxurious Roman", cursive;
+  width: 20em;
 }
 @media only screen and (max-width: 600px) {
   p {
     font-size: 14px;
   }
-  .mask1{
-    text-align:center;
-    font-size:8em;
+  .mask1 {
+    text-align: center;
+    font-size: 8em;
   }
 }
-.event{
-  display:grid;
+.event {
+  display: grid;
   place-content: center;
 }

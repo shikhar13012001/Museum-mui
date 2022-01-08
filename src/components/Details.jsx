@@ -8,6 +8,11 @@ import Chip from "@mui/material/Chip";
 import { Context } from "../Context/AuthContext";
 import BookmarkAddedIcon from "@mui/icons-material/BookmarkAdded";
 import { withRouter } from "react-router-dom";
+import Alert from "@mui/material/Alert";
+import IconButton from "@mui/material/IconButton";
+import Collapse from "@mui/material/Collapse";
+import CloseIcon from "@mui/icons-material/Close";
+
 const Line = (props) => (
   <div
     style={{
@@ -20,6 +25,7 @@ const Line = (props) => (
   ></div>
 );
 const Details = (props) => {
+  const [copied, setCopied] = React.useState(null);
   const { artifact } = props;
   const [Likes, setLikes] = React.useState(0);
   const [context, setContext] = React.useContext(Context);
@@ -28,16 +34,20 @@ const Details = (props) => {
   );
 
   const handleLike = async () => {
-    try {
-      const Like = await fetch(`${Server}/postlike/${artifact.objectID}`, {
-        method: "GET",
-        credentials: "include",
-      });
-      // eslint-disable-next-line
-      setLikes(Likes + 1);
-      // eslint-disable-next-line
-      const res = await Like.json();
-    } catch (e) {}
+    if (context.user) {
+      try {
+        const Like = await fetch(`${Server}/postlike/${artifact.objectID}`, {
+          method: "GET",
+          credentials: "include",
+        });
+        // eslint-disable-next-line
+        setLikes(Likes + 1);
+        // eslint-disable-next-line
+        const res = await Like.json();
+      } catch (e) {}
+    } else {
+      props.history.push("/login");
+    }
   };
   React.useEffect(() => {
     FetchData();
@@ -54,14 +64,21 @@ const Details = (props) => {
     setBookmarked(context.user.liked.includes(artifact.objectID.toString()));
   };
   const handleAddtoBookmark = async () => {
-    const res = await fetch(`${Server}/saveart/${artifact.objectID}`, {
-      method: "GET",
-      credentials: "include",
-    });
-    const data = await res.json();
-    console.log(data);
-    setContext({ user: data });
-    setBookmarked(true);
+    if (context.user) {
+      try {
+        const res = await fetch(`${Server}/saveart/${artifact.objectID}`, {
+          method: "GET",
+          credentials: "include",
+        });
+        const data = await res.json();
+        console.log(data);
+        setContext({ user: data });
+        setBookmarked(true);
+      } catch (e) {}
+    }
+    else{
+      props.history.push('/login')
+    }
   };
   return (
     <div className="details">
@@ -93,6 +110,26 @@ const Details = (props) => {
         <strong style={{ fontWeight: "bold" }}>Classification: </strong>
         {artifact.classification}
       </span>
+      <Collapse in={copied}>
+        <Alert
+          severity="success"
+          action={
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              size="small"
+              onClick={() => {
+                setCopied(!copied);
+              }}
+            >
+              <CloseIcon fontSize="inherit" />
+            </IconButton>
+          }
+          sx={{ mb: 2 }}
+        >
+          URL copied
+        </Alert>
+      </Collapse>
       <Stack direction="row" spacing={5} sx={{ mt: 3 }}>
         <Chip
           avatar={
@@ -134,6 +171,12 @@ const Details = (props) => {
             cursor: "pointer",
             width: "40px",
             height: "40px",
+          }}
+          onClick={() => {
+            setCopied(true);
+            navigator.clipboard.writeText(
+              `http://localhost:3000/artifact/${artifact.objectID}`
+            );
           }}
         />
       </Stack>
