@@ -1,0 +1,12 @@
+const express = require("express");
+const router = express.Router();
+const authController = require("../controller/authController");
+const requireAuth = require("../middleware/authMiddleware");
+router.post("/login", authController.login);
+router.post("/register", authController.register);
+router.get("/logout", authController.logout);
+router.get("/", requireAuth, authController.getUser);
+router.get("/postLike/:ProductID", requireAuth, authController.postLike);
+router.get("/product/:ProductID", authController.ProductLikes);
+router.get("/saveart/:ProductID", requireAuth, authController.saveArt);
+module.exports = router;
