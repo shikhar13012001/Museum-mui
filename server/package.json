@@ -18,6 +18,7 @@
     "@heroku/buildpack-registry": "^1.0.1",
     "bcrypt": "^5.0.1",
     "chalk": "^2.4.2",
+    "cloudinary": "^1.28.1",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",

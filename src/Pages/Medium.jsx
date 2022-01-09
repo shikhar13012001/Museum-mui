@@ -23,8 +23,8 @@ const Medium = (props) => {
     if (!objects) return; 
     const gallery = [];
     for (
-      let i = (page - 1) * 15 + 1;
-      i < Math.min(objects.total, (page - 1) * 15 + 16);
+      let i = (page - 1) * 5 + 1;
+      i < Math.min(objects.total, (page - 1) * 5 + 6);
       i++
     ) {
       let img = await fetch(
@@ -73,7 +73,7 @@ const Medium = (props) => {
         <SearchItem item={item} key={index} />
       ))}
       <Pagination
-        count={Math.ceil(objects.total / 15)}
+        count={Math.ceil(objects.total / 5)}
         shape="rounded"
         page={page}
         onChange={handlePage}

@@ -1,11 +1,17 @@
 const { User, ArtifactSocialInfo } = require("../models/User");
 const jwt = require("jsonwebtoken");
+const cloudinary = require("cloudinary");
 const bcrypt = require("bcrypt");
 const createToken = (id) => {
   return jwt.sign({ id }, "SECRET_KEY", {
     expiresIn: 60 * 60 * 24 * 3,
   });
 };
+cloudinary.config({
+  cloud_name: "iiitm-gwalior",
+  api_key: "755879114919117",
+  api_secret: "EEg7l_-FagG6vT2AxVXMS4BIjUY",
+});
 
 exports.register = async (req, res) => {
   const { name, email, password } = req.body;
@@ -35,7 +41,8 @@ exports.login = async (req, res) => {
         res.cookie("jwt", token, {
           httpOnly: true,
           maxAge: 60 * 60 * 24 * 3 * 1000,
-          sameSite: 'none', secure: true,
+          sameSite: "none",
+          secure: true,
         });
         res.status(200).json({ user, token: token });
       } else throw Error("Authentication failed");
@@ -58,8 +65,8 @@ exports.postLike = async (req, res) => {
   }
 };
 exports.logout = (req, res) => {
-  res.cookie("jwt", "", { maxAge: 1, sameSite: 'none', secure: true });
-  res.redirect("/");
+  res.cookie("jwt", "", { maxAge: 1, sameSite: "none", secure: true });
+  res.send({message:"logged"})
 };
 exports.saveArt = async (req, res) => {
   const user = await User.findOneAndUpdate(
@@ -93,14 +100,15 @@ exports.getUser = (req, res) => {
 exports.UploadImage = async (req, res) => {
   try {
     const url = req.protocol + "://" + req.get("host");
-    const ImgPath = url + "/public/" + req.file.filename;
+
+    const result = await cloudinary.uploader.upload(req.file.path);
     const USER = await User.findOneAndUpdate(
       {
         _id: req.user._id,
       },
       {
         $set: {
-          profileImg: ImgPath,
+          profileImg: result.secure_url,
         },
       },
       { new: true, returnDocument: true }
