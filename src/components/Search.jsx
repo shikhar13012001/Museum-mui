@@ -36,8 +36,7 @@ export default function CustomizedInputBase() {
         let img = await fetch(
           `https://afternoon-bayou-41725.herokuapp.com/object/${res.objectIDs[i]}`
         );
-       const temp= await img.json();
-      console.log(temp);
+        const temp = await img.json();
         if (!temp || !temp.objectID) {
           img = await fetch(
             `https://collectionapi.metmuseum.org/public/collection/v1/objects/${res.objectIDs[i]}`
@@ -46,18 +45,16 @@ export default function CustomizedInputBase() {
             `https://afternoon-bayou-41725.herokuapp.com/upload/${res.objectIDs[i]}`
           );
         }
-        
-        const response =temp&&temp.objectID?temp:(await img.json());
-       
+
+        const response = temp && temp.objectID ? temp : await img.json();
+
         if (!response.objectID) continue;
         gallery.push(response);
       }
-      console.log(gallery)
+
       setSearch(gallery);
       setisLoaded(true);
-    } catch (e) {
-      console.log(e)
-    }
+    } catch (e) {}
   };
 
   return (
@@ -79,13 +76,17 @@ export default function CustomizedInputBase() {
           placeholder="Search for Artist, Artwork ..."
           inputProps={{ "aria-label": "search google maps" }}
           onChange={(e) => {
-            console.log(e.target.value);
             setSearchData(e.target.value);
           }}
           onSubmit={handleSearch}
         />
-        <IconButton type="submit" sx={{ p: "10px" }} aria-label="search" onClick={handleSearch}>
-          <SearchIcon  />
+        <IconButton
+          type="submit"
+          sx={{ p: "10px" }}
+          aria-label="search"
+          onClick={handleSearch}
+        >
+          <SearchIcon />
         </IconButton>
       </Paper>
       {searchResult &&

@@ -15,6 +15,7 @@ exports.register = async (req, res) => {
     res.cookie("jwt", token, {
       httpOnly: true,
       maxAge: 60 * 60 * 24 * 3 * 1000,
+      SameSite: "none",
     });
     res.status(201).json({ user, token: token });
   } catch (err) {
@@ -34,6 +35,7 @@ exports.login = async (req, res) => {
         res.cookie("jwt", token, {
           httpOnly: true,
           maxAge: 60 * 60 * 24 * 3 * 1000,
+          sameSite: 'none', secure: true,
         });
         res.status(200).json({ user, token: token });
       } else throw Error("Authentication failed");
@@ -56,7 +58,7 @@ exports.postLike = async (req, res) => {
   }
 };
 exports.logout = (req, res) => {
-  res.cookie("jwt", "", { maxAge: 1 });
+  res.cookie("jwt", "", { maxAge: 1, sameSite: 'none', secure: true });
   res.redirect("/");
 };
 exports.saveArt = async (req, res) => {

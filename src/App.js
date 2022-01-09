@@ -28,7 +28,7 @@ function App() {
         credentials: "include",
       });
       const data = await res.json();
-      console.log(data);
+       
       setUser(data);
       setContext(data);
       if (data.user) localStorage.setItem("isAuthenticated", true);

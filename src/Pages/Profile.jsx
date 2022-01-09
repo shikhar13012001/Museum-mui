@@ -5,7 +5,7 @@ import { Container, Chip, Box, Button  } from "@mui/material";
 import server from "../utils/server" 
 const Profile = () => {
   const [context, setContext] = React.useContext(Context);
-  console.log("context",context);
+ 
 
   const [posts, setPosts] = React.useState([]);
   const photo = context?.user?.profileImg;

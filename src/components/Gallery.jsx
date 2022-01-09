@@ -48,7 +48,7 @@ const Images = (props) => {
           images_collect.push(obj);
         } catch (e) {}
       }
-      console.log(images_collect);
+       
       setImages(images_collect);
       setIsLoaded(true);
     } catch (e) {}

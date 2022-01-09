@@ -28,8 +28,7 @@ const Details = (props) => {
   const [copied, setCopied] = React.useState(null);
   const { artifact } = props;
   const [Likes, setLikes] = React.useState(0);
-  const [context, setContext] = React.useContext(Context);
-  console.log(context)
+  const [context, setContext] = React.useContext(Context); 
   const [isBookmarked, setBookmarked] = React.useState(
     context?.user?.liked?.includes(artifact.objectID.toString()) || false
   );
@@ -71,8 +70,7 @@ const Details = (props) => {
           method: "GET",
           credentials: "include",
         });
-        const data = await res.json();
-        console.log(data);
+        const data = await res.json(); 
         setContext({ user: data });
         setBookmarked(true);
       } catch (e) {}

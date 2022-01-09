@@ -20,8 +20,7 @@ const Medium = (props) => {
     setPage(v);
   };
   const Paginate = async () => {
-    if (!objects) return;
-    console.log("worked");
+    if (!objects) return; 
     const gallery = [];
     for (
       let i = (page - 1) * 15 + 1;
@@ -33,7 +32,7 @@ const Medium = (props) => {
           objects.objectIDs[i - 1]
         }`
       );
-console.log(img);
+ 
       if (!img.objectID) {
         img = await fetch(
           `https://collectionapi.metmuseum.org/public/collection/v1/objects/${
@@ -44,10 +43,10 @@ console.log(img);
 
       }
       const response = await img.json();
-      console.log(response);
+     
       gallery.push(response);
     }
-    console.log(gallery);
+     
     setPageResult(gallery);
   };
   const FetchData = async () => {
@@ -59,7 +58,7 @@ console.log(img);
 
     const data = await fetch(url);
     const res = await data.json();
-    console.log(res);
+   
     setObjects(res);
     setStartPage(true);
   };

@@ -42,40 +42,7 @@ const Artists = (props) => {
 };
 
 export default Artists;
-{/* <Grid
-        container
-        justifyContent="center"
-        alignItems="center"
-        spacing={{ xs: 2, sm: 2, md: 3 }}
-        columns={{ xs: 5, sm: 5, md: 12 }}
-      >
-        {data.map((item, index) => (
-          <Grid item md={2.2} key={index}>
-            <Artist item={item} index={index} />
-          </Grid>
-        ))}
-      </Grid> */}
-
-
-  //     <ReactFullpage
-  // anchors={anchors}
  
-  //   navigationTooltips={anchors}
-  //   sectionsColor={["white"]}
-  //   onLeave={(origin, destination, direction) => {
-  //     console.log("onLeave event", { origin, destination, direction });
-  //   }}
-  //  render={({ state, fullpageApi }) => {
-  //     console.log("render prop change", state, fullpageApi); // eslint-disable-line no-console
 
-  //     return (
-  //       <div>
-  //        {
-  //          data.map((item,index)=>(
-  //              <Artist item={item} index={index}  />
-  //          ))
-  //        }
-  //       </div>
-  //     );
-  //   }}
-  //  />
+
+   

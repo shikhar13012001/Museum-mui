@@ -44,8 +44,7 @@ const SignUp = (props) => {
         password: data.get("password"),
       }),
     });
-    const res = await User.json();
-    console.log(res);
+    const res = await User.json(); 
     if (res.user) {
       props.handleAuth(res.user);
       props.history.push("/");

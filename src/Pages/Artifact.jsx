@@ -31,8 +31,7 @@ const Artifact = (props) => {
       let img = await fetch(
         `https://afternoon-bayou-41725.herokuapp.com/object/${ID}`
       );
-      const temp = await img.json();
-      console.log(temp);
+      const temp = await img.json(); 
       if (!temp || !temp.objectID) {
         img = await fetch(
           `https://collectionapi.metmuseum.org/public/collection/v1/objects/${ID}`
@@ -41,8 +40,7 @@ const Artifact = (props) => {
       }
 
       const data = temp && temp.objectID ? temp : await img.json();
-      setArtifact(data);
-      console.log(data.primaryImage, "data");
+      setArtifact(data); 
     } catch (e) {
       return;
     }
