@@ -64,7 +64,7 @@ exports.saveArt = async (req, res) => {
     { _id: req.user._id },
     {
       $push: {
-        "liked": req.params.ProductID,
+        liked: req.params.ProductID,
       },
     },
     { returnNewDocument: true, new: true }
@@ -86,4 +86,25 @@ exports.ProductLikes = async (req, res) => {
 
 exports.getUser = (req, res) => {
   res.json({ user: req.user });
+};
+
+exports.UploadImage = async (req, res) => {
+  try {
+    const url = req.protocol + "://" + req.get("host");
+    const ImgPath = url + "/public/" + req.file.filename;
+    const USER = await User.findOneAndUpdate(
+      {
+        _id: req.user._id,
+      },
+      {
+        $set: {
+          profileImg: ImgPath,
+        },
+      },
+      { new: true, returnDocument: true }
+    );
+    res.status(200).json({ user: USER });
+  } catch (e) {
+    res.status(500).json({ message: e.message });
+  }
 };

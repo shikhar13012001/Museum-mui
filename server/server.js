@@ -2,8 +2,12 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const AuthRoutes = require("./routes/authRoutes");
+
 const cors = require("cors");
 const app = express();
+
+const DIR = "./public/";
+app.use('/public', express.static('public'));
 app.use(express.json());
 app.use(
   cors({

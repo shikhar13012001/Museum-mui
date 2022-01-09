@@ -14,6 +14,8 @@ import Register from "./Pages/Register";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import server from "./utils/server";
 import {Context} from "./Context/AuthContext";
+import Profile from "./Pages/Profile"
+import {Redirect} from "react-router-dom"
 
 function App() {
   const [User, setUser] = React.useState(null);
@@ -26,6 +28,7 @@ function App() {
         credentials: "include",
       });
       const data = await res.json();
+      console.log(data);
       setUser(data);
       setContext(data);
       if (data.user) localStorage.setItem("isAuthenticated", true);
@@ -48,6 +51,9 @@ function App() {
             <ProtectedRoute exact path="/register">
               <Register handleAuth={(e) => setAuth(e)} />
             </ProtectedRoute>
+            <Route exact path="/profile">
+              {User.user?<Profile handleAuth={(e) => setAuth(e)} />:<Redirect to="/login"/>}
+            </Route>
             <Route exact path="/artists" component={Artists} />
             <Route exact path="/collections" component={Collections} />
             <Route exact path="/artwork/:artist_id" component={Artwork} />

@@ -53,6 +53,7 @@ const SignInSide = (props) => {
           password: data.get("password"),
         }),
       });
+      console.log("retest")
       const data2 = await User.json();
       if(data2.user)
       {

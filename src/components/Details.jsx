@@ -29,8 +29,9 @@ const Details = (props) => {
   const { artifact } = props;
   const [Likes, setLikes] = React.useState(0);
   const [context, setContext] = React.useContext(Context);
+  console.log(context)
   const [isBookmarked, setBookmarked] = React.useState(
-    context.user.liked.includes(artifact.objectID.toString()) || false
+    context?.user?.liked?.includes(artifact.objectID.toString()) || false
   );
 
   const handleLike = async () => {
@@ -61,7 +62,7 @@ const Details = (props) => {
 
     const data = await res.json();
     setLikes(data.likes);
-    setBookmarked(context.user.liked.includes(artifact.objectID.toString()));
+    setBookmarked(context?.user?.liked?.includes(artifact.objectID.toString())||false);
   };
   const handleAddtoBookmark = async () => {
     if (context.user) {
