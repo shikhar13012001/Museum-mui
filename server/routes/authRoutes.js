@@ -11,4 +11,5 @@ router.post("/userimg",requireAuth,Upload.single('profileImg'),authController.Up
 router.get("/postLike/:ProductID", requireAuth, authController.postLike);
 router.get("/product/:ProductID", authController.ProductLikes);
 router.get("/saveart/:ProductID", requireAuth, authController.saveArt);
+router.get("/:node",authController.artifactInfo);
 module.exports = router;

@@ -1,6 +1,8 @@
 const { User, ArtifactSocialInfo } = require("../models/User");
 const jwt = require("jsonwebtoken");
+const cheerio = require("cheerio");
 const cloudinary = require("cloudinary");
+const rp = require("request-promise");
 const bcrypt = require("bcrypt");
 const createToken = (id) => {
   return jwt.sign({ id }, "SECRET_KEY", {
@@ -21,7 +23,8 @@ exports.register = async (req, res) => {
     res.cookie("jwt", token, {
       httpOnly: true,
       maxAge: 60 * 60 * 24 * 3 * 1000,
-      SameSite: "none",
+      sameSite: "none",
+      secure: true,
     });
     res.status(201).json({ user, token: token });
   } catch (err) {
@@ -66,7 +69,7 @@ exports.postLike = async (req, res) => {
 };
 exports.logout = (req, res) => {
   res.cookie("jwt", "", { maxAge: 1, sameSite: "none", secure: true });
-  res.send({message:"logged"})
+  res.send({ message: "logged" });
 };
 exports.saveArt = async (req, res) => {
   const user = await User.findOneAndUpdate(
@@ -117,4 +120,30 @@ exports.UploadImage = async (req, res) => {
   } catch (e) {
     res.status(500).json({ message: e.message });
   }
+};
+
+exports.artifactInfo = async (req, res) => {
+  const node = req.params.node;
+  const options = {
+    uri: "https://app.scrapingbee.com/api/v1?",
+    qs: {
+      api_key:
+        "KKH5L4NWHS7IL1OHMS5S84QAOVJDSMTFJKZ4D1YUFE9BS09SILZ4TC2WO5CWZE1WJEWJET4I09KDM7S7",
+      url: `https://www.metmuseum.org/art/collection/search/${node}`,
+    },
+  };
+  rp(options)
+    .then((response) => {
+      const $ = cheerio.load(response);
+      const text = $(".artwork__intro__desc p").text();
+  
+      if (!text) {
+        res.json({ err: "No information available found for this artifact" });
+      } else {
+        res.json({ message: $(".artwork__intro__desc p").text() });
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };

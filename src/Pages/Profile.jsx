@@ -4,22 +4,27 @@ import { Context } from "../Context/AuthContext";
 import { Container, Chip, Box, Button } from "@mui/material";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import server from "../utils/server";
+import LinearProgress from "@mui/material/LinearProgress";
+
 import { withRouter } from "react-router-dom";
 const Profile = (props) => {
   const [context, setContext] = React.useContext(Context);
   const handleLogout = async () => {
-    console.log("logout")
-    const res=await fetch(`${server}/logout`, { method: "GET", credentials: "include" });
-    const data= await res.json();
-    console.log(data);
+    const res = await fetch(`${server}/logout`, {
+      method: "GET",
+      credentials: "include",
+    });
+    const data = await res.json();
     setContext(null);
     localStorage.removeItem("isAuthenticated");
     props.history.push("/login");
   };
   const [posts, setPosts] = React.useState([]);
-  const photo = context?.user?.profileImg;
+  const [photo, setPhoto] = React.useState(null);
+  console.log(context?.user?.profileImg);
   const userName = context?.user?.name || "Jan DOe";
   const onFileChange = async (e) => {
+    setPhoto(null);
     const formData = new FormData();
     formData.append("profileImg", e.target.files[0]);
     const res = await fetch(`${server}/userimg`, {
@@ -30,6 +35,7 @@ const Profile = (props) => {
     e.target.value = null;
     const arr = await res.json();
     setContext(arr);
+    setPhoto(arr.user.profileImg);
   };
   const FetchList = async () => {
     const arrTemp = [];
@@ -45,7 +51,8 @@ const Profile = (props) => {
   };
   React.useEffect(() => {
     FetchList();
-  }, [context]);
+    setPhoto(context?.user?.profileImg);
+  }, [context?.user]);
   return (
     <Container
       sx={{
@@ -54,15 +61,29 @@ const Profile = (props) => {
         display: "flex",
         alignItems: "center",
         flexDirection: "column",
+        position: "relative",
       }}
     >
-      <img
-        src={photo}
-        alt=""
-        width="300px"
-        height="auto"
-        style={{ borderRadius: "20px" }}
-      />
+      {photo ? (
+        <img
+          src={photo}
+          alt=""
+          width="300px"
+          height="auto"
+          style={{ borderRadius: "20px" }}
+        />
+      ) : (
+        <p
+          style={{
+            width: "80%",
+            textAlign: "left",
+            fontStyle: "italic",
+            margin: "30px 0",
+          }}
+        >
+          <LinearProgress />
+        </p>
+      )}
       <input type="file" onChange={onFileChange} style={{ margin: "30px" }} />
       <label class="custom-file-upload">
         <input type="file" onChange={onFileChange} />

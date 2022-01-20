@@ -20,7 +20,7 @@ const Medium = (props) => {
     setPage(v);
   };
   const Paginate = async () => {
-    if (!objects) return; 
+    if (!objects) return;
     const gallery = [];
     for (
       let i = (page - 1) * 5 + 1;
@@ -28,25 +28,16 @@ const Medium = (props) => {
       i++
     ) {
       let img = await fetch(
-        `https://afternoon-bayou-41725.herokuapp.com/object/${
+        `https://collectionapi.metmuseum.org/public/collection/v1/objects/${
           objects.objectIDs[i - 1]
         }`
       );
- 
-      if (!img.objectID) {
-        img = await fetch(
-          `https://collectionapi.metmuseum.org/public/collection/v1/objects/${
-            objects.objectIDs[i - 1]
-          }`
-        );
-        await fetch(`https://afternoon-bayou-41725.herokuapp.com/upload/${objects.objectIDs[i - 1]}`);
 
-      }
       const response = await img.json();
-     
+
       gallery.push(response);
     }
-     
+
     setPageResult(gallery);
   };
   const FetchData = async () => {
@@ -58,7 +49,7 @@ const Medium = (props) => {
 
     const data = await fetch(url);
     const res = await data.json();
-   
+
     setObjects(res);
     setStartPage(true);
   };

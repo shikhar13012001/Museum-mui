@@ -53,16 +53,12 @@ const SignInSide = (props) => {
           password: data.get("password"),
         }),
       });
-    
-      const data2 = await User.json();
-      if(data2.user)
-      {
-        props.handleAuth(data2.user);
-        props.history.push("/")
-      }
-      else
-      setErr(true);
 
+      const data2 = await User.json();
+      if (data2.user) {
+        props.handleAuth(data2.user);
+        props.history.push("/");
+      } else setErr(true);
     } catch (e) {
       setErr(true);
     }
@@ -106,9 +102,9 @@ const SignInSide = (props) => {
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>
-            <Collapse in={err} >
+            <Collapse in={err}>
               <Alert
-              severity="error"
+                severity="error"
                 action={
                   <IconButton
                     aria-label="close"
@@ -117,14 +113,13 @@ const SignInSide = (props) => {
                     onClick={() => {
                       setErr(!err);
                     }}
-                    
                   >
                     <CloseIcon fontSize="inherit" />
                   </IconButton>
                 }
                 sx={{ mb: 2 }}
               >
-             Authentication Failed try again
+                Authentication Failed try again
               </Alert>
             </Collapse>
             <Box

@@ -15,8 +15,8 @@ const SearchItem = (props) => {
   });
   return (
     <Grid
-    data-aos="zoom-out-down"
-    data-aos-duration="1500"
+    data-aos="fade-up"
+     data-aos-duration="1000"
       container
       columns={16}
       sx={{
