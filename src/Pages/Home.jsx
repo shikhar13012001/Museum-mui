@@ -10,10 +10,12 @@ import hoverEffect from "hover-effect";
 import IMAGE1 from "../assests/GreekGod.png";
 import IMAGE2 from "../assests/GreekGod2.png";
 import TEXTURE from "../assests/textQR.jpg";
+import Pattern from "../assests/Group 1.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 const Home = () => {
+  const [loading, setLoading] = React.useState(true);
   useEffect(() => {
     AOS.init({
       duration: 2000,
@@ -37,6 +39,14 @@ const Home = () => {
 
         <Container sx={{ width: "100%", height: "fit-content" }}>
           <Events />
+          <img
+            src={Pattern}
+            alt="pattern"
+            className="pattern"
+            data-aos="zoom-out-right"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="1000"
+          />
           <MockUp />
           <Video />
         </Container>

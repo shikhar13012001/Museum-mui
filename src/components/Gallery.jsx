@@ -12,7 +12,7 @@ const Images = (props) => {
     return;
     // eslint-disable-next-line
   }, [props]);
-  const FetchData = async () => {
+  const FetchData = React.useCallback(async () => {
     //departments
 
     try {
@@ -42,7 +42,7 @@ const Images = (props) => {
       setImages(images_collect);
       setIsLoaded(true);
     } catch (e) {}
-  };
+  },[props.name])
 
   return isLoaded === false ? (
     <Box

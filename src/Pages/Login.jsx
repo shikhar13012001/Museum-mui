@@ -14,6 +14,7 @@ import Alert from "@mui/material/Alert";
 import IconButton from "@mui/material/IconButton";
 import Collapse from "@mui/material/Collapse";
 import CloseIcon from "@mui/icons-material/Close";
+import LOGO from "../assests/Logo (2).png";
 
 function Copyright(props) {
   return (
@@ -95,7 +96,7 @@ const SignInSide = (props) => {
             }}
           >
             <img
-              src="https://ds055uzetaobb.cloudfront.net/brioche/chapter/contest_math_I-0QX1ql.png?width=160"
+              src={LOGO}
               alt=""
             />
 

@@ -4,6 +4,8 @@ import Chip from "@mui/material/Chip";
 import { Navbar } from "responsive-navbar-react";
 import "responsive-navbar-react/dist/index.css";
 import { Context } from "../Context/AuthContext";
+import LOGO from "../assests/Logo (2).png";
+
 const Home = (props) => {
   const [context, setContext] = React.useContext(Context);
   const options = {
@@ -39,7 +41,7 @@ const Home = (props) => {
       //     },
     ],
     logo: {
-      img: "https://ds055uzetaobb.cloudfront.net/brioche/chapter/contest_math_I-0QX1ql.png?width=160",
+      img: LOGO,
     },
     style: {
       barStyles: {

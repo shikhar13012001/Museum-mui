@@ -10,6 +10,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import server from "../utils/server";
 import { withRouter } from "react-router-dom";
+import LOGO from "../assests/Logo (2).png";
 function Copyright(props) {
   return (
     <Typography
@@ -64,7 +65,7 @@ const SignUp = (props) => {
           }}
         >
           <img
-            src="https://ds055uzetaobb.cloudfront.net/brioche/chapter/contest_math_I-0QX1ql.png?width=160"
+            src={LOGO}
             alt=""
           />
 

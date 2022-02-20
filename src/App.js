@@ -13,14 +13,15 @@ import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import server from "./utils/server";
-import {Context} from "./Context/AuthContext";
-import Profile from "./Pages/Profile"
-import {Redirect} from "react-router-dom"
+import { Context } from "./Context/AuthContext";
+import Profile from "./Pages/Profile";
+import { Redirect } from "react-router-dom";
+import AnnouncementBar from "./components/AnnouncementBar";
 
 function App() {
   const [User, setUser] = React.useState(null);
   const [auth, setAuth] = React.useState(null);
-  const [context,setContext]=React.useState(null);
+  const [context, setContext] = React.useState(null);
   const FetchUser = async () => {
     try {
       const res = await fetch(`${server}`, {
@@ -28,7 +29,7 @@ function App() {
         credentials: "include",
       });
       const data = await res.json();
-       
+
       setUser(data);
       setContext(data);
       if (data.user) localStorage.setItem("isAuthenticated", true);
@@ -36,12 +37,13 @@ function App() {
   };
 
   React.useEffect(() => {
-    FetchUser(); 
+    FetchUser();
   }, [auth]);
   return (
     User && (
-      <Context.Provider value={[context,setContext]}>
+      <Context.Provider value={[context, setContext]}>
         <Router>
+          <AnnouncementBar />
           <Header user={User.user} />
           <Switch>
             <Route exact path="/" component={Home} />
@@ -52,7 +54,11 @@ function App() {
               <Register handleAuth={(e) => setAuth(e)} />
             </ProtectedRoute>
             <Route exact path="/profile">
-              {User.user?<Profile handleAuth={(e) => setAuth(e)} />:<Redirect to="/login"/>}
+              {User.user ? (
+                <Profile handleAuth={(e) => setAuth(e)} />
+              ) : (
+                <Redirect to="/login" />
+              )}
             </Route>
             <Route exact path="/artists" component={Artists} />
             <Route exact path="/collections" component={Collections} />

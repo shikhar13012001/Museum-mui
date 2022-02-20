@@ -6,6 +6,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Vujahday+Script&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Luxurious+Roman&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100&display=swap");
 * {
   font-weight: 100;
   margin: 0;
@@ -25,7 +26,6 @@
     19px 19px rgba(0, 0, 0, 0.01), 20px 20px rgba(0, 0, 0, 0.01),
     21px 21px rgba(0, 0, 0, 0.01), 22px 22px rgba(0, 0, 0, 0.01),
     23px 23px rgba(0, 0, 0, 0.01);
-    transition: all 1s ease-in;
 }
 span {
   font-family: "Roboto Mono", monospace;
@@ -239,7 +239,7 @@ canvas {
   flex-direction: column;
   text-align: left;
   font-size: 14px;
-  margin:2em;
+  margin: 2em;
 }
 
 .vignette {
@@ -457,7 +457,7 @@ iframe {
     19px 19px rgba(0, 0, 0, 0.01), 20px 20px rgba(0, 0, 0, 0.01),
     21px 21px rgba(0, 0, 0, 0.01), 22px 22px rgba(0, 0, 0, 0.01),
     23px 23px rgba(0, 0, 0, 0.01);
-    text-align: center;
+  text-align: center;
 }
 .custom-file-upload {
   border: 2px solid rgb(0, 0, 0);
@@ -510,6 +510,15 @@ input[type="file"] {
   p {
     font-size: 14px;
   }
+  .app-detail > h1 {
+    font-size: 3em;
+    width: 100%;
+    font-family: "Vujahday Script", cursive;
+  }
+  .app-detail > p {
+    font-family: "Luxurious Roman", cursive;
+    width: 100%;
+  }
   .mask1 {
     text-align: center;
     font-size: 8em;
@@ -518,4 +527,52 @@ input[type="file"] {
 .event {
   display: grid;
   place-content: center;
+}
+.pattern {
+  width: 60%;
+  height: 13em;
+}
+
+
+.sqs-announcement-bar-footer {
+  height: fit-content;
+  font-family: "JetBrains Mono", monospace;
+  vertical-align: middle;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  background:black;
+}
+
+.sqs-announcement-bar {
+  height: fit-content;
+  font-family: "JetBrains Mono", monospace;
+  vertical-align: middle;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  background: rgb(63, 94, 251);
+  background: radial-gradient(
+    circle,
+    rgba(63, 94, 251, 1) 0%,
+    rgba(252, 70, 107, 1) 100%
+  ) !important;
+}
+
+@media only screen and (min-width: 321px) and (max-width: 768px) {
+  .pattern {
+    display: none;
+  }
+  .sqs-announcement-bar,.sqs-announcement-bar-footer {
+    font-size: 0.55em;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .pattern {
+    display: none;
+  }
+  .sqs-announcement-bar,.sqs-announcement-bar-footer {
+    font-size: 0.55em;
+  }
 }

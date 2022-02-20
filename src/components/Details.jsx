@@ -174,7 +174,7 @@ const Details = (props) => {
           onClick={() => {
             setCopied(true);
             navigator.clipboard.writeText(
-              `http://localhost:3000/artifact/${artifact.objectID}`
+              `https://sonofogrelouvre.netlify.app/artifact/${artifact.objectID}`
             );
           }}
         />
