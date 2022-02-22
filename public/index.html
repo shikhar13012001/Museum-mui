@@ -117,7 +117,11 @@
   <script>
     window.addEventListener("DOMContentLoaded", function () {
       var loader = document.querySelector(".loading");
-      loader?.style?.display="none";
+      if(loader)
+      {
+        loader.style.display="none";
+
+      }
     });
   </script>
 </html>
