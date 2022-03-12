@@ -17,7 +17,8 @@ import { Context } from "./Context/AuthContext";
 import Profile from "./Pages/Profile";
 import { Redirect } from "react-router-dom";
 import AnnouncementBar from "./components/AnnouncementBar";
-
+import Logo from './assests/Logo \(2).webp'
+import Container from '@mui/material/Container'
 function App() {
   const [User, setUser] = React.useState(null);
   const [auth, setAuth] = React.useState(null);
@@ -40,7 +41,7 @@ function App() {
     FetchUser();
   }, [auth]);
   return (
-    User && (
+    User ?(
       <>
       <Context.Provider value={[context, setContext]}>
         <Router>
@@ -71,7 +72,9 @@ function App() {
       </Context.Provider>
           <Footer />
           </>
-    )
+    ):<Container sx={{width:"100%",height:'100vh',display:'grid',placeContent:'center'}}>
+      <img src={Logo} alt="logo" />
+    </Container>
   );
 }
 

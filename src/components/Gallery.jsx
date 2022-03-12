@@ -14,7 +14,6 @@ const Images = (props) => {
   }, [props]);
   const FetchData = React.useCallback(async () => {
     //departments
-
     try {
       setIsLoaded(false);
       const res = await fetch(
@@ -23,7 +22,7 @@ const Images = (props) => {
       const data = await res.json();
       let images_collect = [];
       const Promises = [];
-      for (let i = 0; i < Math.min(data.objectIDs.length, 80); i++) {
+      for (let i = 0; i < Math.min(data.objectIDs.length, 30); i++) {
         try {
           Promises.push(
             fetch(

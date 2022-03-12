@@ -25,10 +25,10 @@ const Artwork = (props) => {
           marginBottom: "1em",
         }}
       ></div>
-     <div className="gg-gallery" style={{width:"100%",height:"30vh",overflow:"scroll",display:'flex',justifyContent:'center'
-     }}>
+     {/* <div className="gg-gallery" style={{width:"100%",height:"30vh",overflow:"auto",display:'flex',justifyContent:'center'
+     }}> */}
       <Gallery name={name} />
- </div>
+ {/* </div> */}
       <div
         style={{
           width: "90vw",
