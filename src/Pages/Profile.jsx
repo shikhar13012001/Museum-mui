@@ -20,7 +20,9 @@ const Profile = (props) => {
     props.history.push("/login");
   };
   const [posts, setPosts] = React.useState([]);
-  const [photo, setPhoto] = React.useState(null);
+  const [photo, setPhoto] = React.useState(
+    "https://hypixel.net/attachments/darkwastaken-gif.2007251/"
+  );
   console.log(context?.user?.profileImg);
   const userName = context?.user?.name || "Jan DOe";
   const onFileChange = async (e) => {
@@ -51,7 +53,10 @@ const Profile = (props) => {
   };
   React.useEffect(() => {
     FetchList();
-    setPhoto(context?.user?.profileImg);
+    setPhoto(
+      context?.user?.profileImg ||
+        "https://hypixel.net/attachments/darkwastaken-gif.2007251/"
+    );
   }, [context?.user]);
   return (
     <Container
@@ -85,7 +90,7 @@ const Profile = (props) => {
         </p>
       )}
       <input type="file" onChange={onFileChange} style={{ margin: "30px" }} />
-      <label class="custom-file-upload">
+      <label className="custom-file-upload">
         <input type="file" onChange={onFileChange} />
         New Profile Image Upload
       </label>

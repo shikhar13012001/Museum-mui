@@ -109,7 +109,7 @@ body {
 .artifacts {
   width: 40%;
   height: 100%;
-  background-image: url("./assests/2.png");
+  background-image: url("./assests/2.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -139,7 +139,7 @@ canvas {
 .image-highlights {
   height: 80%;
   border-radius: 20px;
-  background-image: url("https://img.etimg.com/thumb/msid-69201397,width-650,imgsize-912935,,resizemode-4,quality-100/ets-dualpane-2019-05-06t161833-568.jpg");
+  background-image: url("https://img.etimg.com/thumb/msid-69201397,width-650,imgsize-912935,,resizemode-4,quality-100/ets-dualpane-2019-05-06t161833-568.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -439,7 +439,7 @@ iframe {
   align-items: center;
 }
 .mask1 {
-  background: url("./assests/mask.png"), black;
+  background: url("./assests/mask.webp"), black;
   background-clip: text;
   color: transparent;
   font-family: "Bebas Neue", cursive;
@@ -473,7 +473,7 @@ input[type="file"] {
   color: white;
 }
 .image-wrapper {
-  background-image: url("./assests/mockUp.png");
+  background-image: url("./assests/mockUp.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -483,7 +483,7 @@ input[type="file"] {
   overflow: hidden;
 }
 .mockUp {
-  background-image: url("./assests/PhoneVisual.jpg");
+  background-image: url("./assests/PhoneVisual.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -495,7 +495,7 @@ input[type="file"] {
   transition: background-image 1s ease-in;
 }
 .mockUp:hover {
-  background-image: url("https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/966ba161210867.5a67427cb173a.jpg");
+  background-image: url("https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/966ba161210867.5a67427cb173a.webp");
 }
 .app-detail > h1 {
   font-size: 3em;
@@ -547,7 +547,6 @@ input[type="file"] {
 .sqs-announcement-bar {
   height: fit-content;
   font-family: "JetBrains Mono", monospace;
-  vertical-align: middle;
   font-weight: bold;
   text-align: center;
   color: white;

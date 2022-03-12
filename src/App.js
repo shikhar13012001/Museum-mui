@@ -41,6 +41,7 @@ function App() {
   }, [auth]);
   return (
     User && (
+      <>
       <Context.Provider value={[context, setContext]}>
         <Router>
           <AnnouncementBar />
@@ -66,9 +67,10 @@ function App() {
             <Route exact path="/artifact/:id" component={Artifact} />
             <Route exact path="/:medium/:type" component={Medium} />
           </Switch>
-          <Footer />
         </Router>
       </Context.Provider>
+          <Footer />
+          </>
     )
   );
 }

@@ -62,7 +62,6 @@ const Artifact = (props) => {
     }
   };
   const options = {
-    wrapAround: true,
     freeScroll: true,
     initialIndex: 2,
   };
@@ -82,7 +81,7 @@ const Artifact = (props) => {
         disableImagesLoaded={false} // default false
         // default false
         static // default false
-        style={{ marginTop: "4em" }}
+        style={{ marginTop: 4,display:'flex',justifyContent:'center' }}
       >
         {artifact.additionalImages.map((item, index) => (
           <img

@@ -20,29 +20,40 @@ const Images = (props) => {
       const res = await fetch(
         `https://collectionapi.metmuseum.org/public/collection/v1/search?has_images=true&q=${props.name}`
       );
-      const data = await res.json(); 
+      const data = await res.json();
       let images_collect = [];
-      for (let i = 0; i < Math.min(data.objectIDs.length, 30); i++) {
+      const Promises = [];
+      for (let i = 0; i < Math.min(data.objectIDs.length, 80); i++) {
         try {
-          let img = await fetch(
-            `https://collectionapi.metmuseum.org/public/collection/v1/objects/${data.objectIDs[i]}`
+          Promises.push(
+            fetch(
+              `https://collectionapi.metmuseum.org/public/collection/v1/objects/${data.objectIDs[i]}`
+            )
           );
-
-          const img_data = await img.json(); 
-          const obj = {
-            original: img_data.primaryImageSmall,
-            thumbnail: img_data.primaryImageSmall,
-            id: data.objectIDs[i],
-          };
-
-          images_collect.push(obj);
+ 
         } catch (e) {}
       }
 
+      const img_data = await Promise.all(Promises);
+      const images_collect_data = Promise.all(
+        img_data.map((img) => img.json())
+      );
+      const response = await images_collect_data;
+      console.log(response);
+      for (let i = 0; i < Math.min(data.objectIDs.length, 30); i++) {
+        const obj = {
+          original: response[i].primaryImageSmall,
+          thumbnail: response[i].primaryImageSmall,
+          id: data.objectIDs[i],
+        };
+
+        images_collect.push(obj);
+      }
       setImages(images_collect);
       setIsLoaded(true);
+      return images_collect;
     } catch (e) {}
-  },[props.name])
+  }, [props.name]);
 
   return isLoaded === false ? (
     <Box

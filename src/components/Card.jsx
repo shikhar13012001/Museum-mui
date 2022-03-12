@@ -1,7 +1,7 @@
 import React from "react";
 import "../Card.css";
-import LOGO from "../assests/Logo.png";
-import STATUE from "../assests/statue.jpg";
+import LOGO from "../assests/Logo.webp";
+import STATUE from "../assests/statue.webp";
 const Card = () => {
   const handleHover = () => {
     const ticketElm = document.getElementById("ticket");

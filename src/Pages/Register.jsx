@@ -10,7 +10,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import server from "../utils/server";
 import { withRouter } from "react-router-dom";
-import LOGO from "../assests/Logo (2).png";
+import LOGO from "../assests/Logo (2).webp";
 function Copyright(props) {
   return (
     <Typography

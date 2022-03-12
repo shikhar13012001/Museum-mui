@@ -20,35 +20,38 @@ const Genre = (props) => {
         }`
       );
       const datum = await res.json();
-
+      const Promises = [];
       for (let j = 0; j < Math.min(datum.total, 15); j++) {
         try {
-          let img = await fetch(
-            `https://afternoon-bayou-41725.herokuapp.com/object/${datum.objectIDs[j]}`
+          Promises.push(
+            fetch(
+              `https://afternoon-bayou-41725.herokuapp.com/object/${datum.objectIDs[j]}`
+            )
           );
-          const temp = await img.json();
-
-          if (!temp || !temp.objectID) {
-            img = await fetch(
-              `https://collectionapi.metmuseum.org/public/collection/v1/objects/${datum.objectIDs[j]}`
-            );
-            await fetch(
-              `https://afternoon-bayou-41725.herokuapp.com/upload/${datum.objectIDs[j]}`
-            );
-          }
-          const r = temp && temp.objectID ? temp : await img.json();
-
-          gallery.push({
-            image: r.primaryImage,
-            id: datum.objectIDs[j],
-            item: r,
-          });
-        } catch (e) {}
+          // gallery.push({
+          //   image: r.primaryImage,
+          //   id: datum.objectIDs[j],
+          //   item: r,
+          // });
+        } catch (e) {
+          
+        }
       }
+      const reponse = await Promise.all(Promises);
+      const objects = Promise.all(reponse.map((r) => r.json()));
+      const response_objects = await objects;
+      for (let i = 0; i < response_objects.length; i++) {
+        gallery.push({
+          image: response_objects[i].primaryImage,
+          id: response_objects[i].objectID,
+          item: response_objects[i],
+        });
+      }
+        setData(gallery);
+        setLoaded(true);
+    } catch (e) {
 
-      setData(gallery);
-      setLoaded(true);
-    } catch (e) {}
+    }
   };
 
   return isLoaded === false ? (

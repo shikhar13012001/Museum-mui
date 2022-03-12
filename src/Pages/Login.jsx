@@ -14,7 +14,7 @@ import Alert from "@mui/material/Alert";
 import IconButton from "@mui/material/IconButton";
 import Collapse from "@mui/material/Collapse";
 import CloseIcon from "@mui/icons-material/Close";
-import LOGO from "../assests/Logo (2).png";
+import LOGO from "../assests/Logo (2).webp";
 
 function Copyright(props) {
   return (
@@ -67,7 +67,7 @@ const SignInSide = (props) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ height: "100vh" }}>
+      <Grid container component="main" sx={{ minHeight: "100vh" }}>
         <CssBaseline />
         <Grid
           item

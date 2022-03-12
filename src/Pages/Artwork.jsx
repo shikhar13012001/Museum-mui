@@ -1,7 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router";
 import Banner from "../components/Banner";
-import Header from "../components/header";
 import data from "../Artist.config.data";
 import Gallery from "../components/Gallery";
 import ExtraArtists from "./Artists";
