@@ -7,10 +7,10 @@ import Video from "../components/VIdeo";
 import Events from "../components/Events";
 import MockUp from "../components/MockUp";
 import hoverEffect from "hover-effect";
-import IMAGE1 from "../assests/GreekGod.png";
-import IMAGE2 from "../assests/GreekGod2.png";
-import TEXTURE from "../assests/textQR.jpg";
-import Pattern from "../assests/Group 1.png";
+import IMAGE1 from "../assests/GreekGod.webp";
+import IMAGE2 from "../assests/GreekGod2.webp";
+import TEXTURE from "../assests/textQR.webp";
+import Pattern from "../assests/Group 1.webp";
 import AOS from "aos";
 import "aos/dist/aos.css";
 

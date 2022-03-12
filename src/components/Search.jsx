@@ -32,26 +32,24 @@ export default function CustomizedInputBase() {
         `https://collectionapi.metmuseum.org/public/collection/v1/search?q=${search}`
       );
       const res = await data.json();
-      for (let i = 0; i < Math.min(res.total, 30); i++) {
-        let img = await fetch(
-          `https://afternoon-bayou-41725.herokuapp.com/object/${res.objectIDs[i]}`
-        );
-        const temp = await img.json();
-        if (!temp || !temp.objectID) {
-          img = await fetch(
+      
+      const Promises = [];
+      for (let i = 0; i < Math.min(res.total, 20); i++) {
+        Promises.push(
+          fetch(
             `https://collectionapi.metmuseum.org/public/collection/v1/objects/${res.objectIDs[i]}`
-          );
-          await fetch(
-            `https://afternoon-bayou-41725.herokuapp.com/upload/${res.objectIDs[i]}`
-          );
-        }
-
-        const response = temp && temp.objectID ? temp : await img.json();
-
-        if (!response.objectID) continue;
-        gallery.push(response);
+          )
+        );
       }
-
+      const response = await Promise.all(Promises);
+      const objects = Promise.all(response.map((r) => r.json()));
+      const response_objects = await objects;
+      for (let i = 0; i < response_objects.length; i++) {
+        if (!response_objects[i].objectID) continue;
+        gallery.push(response_objects[i]);
+        // console.log(response_objects[i]);
+      }
+      console.log("gallery", gallery);
       setSearch(gallery);
       setisLoaded(true);
     } catch (e) {}
@@ -93,7 +91,7 @@ export default function CustomizedInputBase() {
         (isLoaded ? (
           <Container sx={{ width: "100%", minHeight: "fit-content" }}>
             {searchResult.map((item, index) => (
-              <SearchItem item={item} />
+              <SearchItem item={item} key={index} />
             ))}
           </Container>
         ) : (

@@ -32,24 +32,22 @@ const SearchItem = (props) => {
         xs={16}
         sm={16}
         md={3}
-        lg={3}
+        lg={4}
         sx={{
-          height: 240,
           display: "grid",
           placeContent: "center",
           position: "relative",
         }}
       >
         <Link to={`/artifact/${item.objectID}`}>
-          <img src={item.primaryImage} width="100%" height="200" alt="" />
+          <img src={item.primaryImage} width="100%" height="100%" alt="" />
         </Link>
       </Grid>
       <Grid
         item
         md={12}
         sm={16}
-        xs={16}
-        lg={13}
+        lg={12}
         sx={{ textAlign: "center", position: "relative" }}
       >
         <h1> {item.title} </h1>

@@ -100,6 +100,7 @@ const Artists = (props) => {
             marginTop: "4em",
             border: "3px solid black",
             borderRadius: "5px",
+            height: "3em",
             mb: 3,
             mt: 3,
           }}
@@ -123,24 +124,13 @@ const Artists = (props) => {
           </IconButton>
         </Paper>
         {AllArtist.map((item, index) => (
-          <Link to={`artwork/${index}`}>
+          <Link to={`/artwork/${index}`}>
           <NewArtist item={item} index={index}  />
           </Link>
         ))}
       </Container>
 
-      {/* <Flickity
-        elementType={"div"} // default 'div'
-        options={options} // takes flickity options {}
-        disableImagesLoaded={false} // default false
-        reloadOnUpdate // default false
-        static // default false
-        style={{ marginTop: "4em" }}
-      >
-        {data.map((item, index) => (
-          <NewArtist item={item} index={index} />
-        ))}
-      </Flickity> */}
+     
     </>
   );
 };
