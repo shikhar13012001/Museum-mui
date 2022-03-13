@@ -35,13 +35,13 @@ const Details = (props) => {
 
   const handleLike = async () => {
     if (context.user) {
+      setLikes(Likes + 1);
       try {
         const Like = await fetch(`${Server}/postlike/${artifact.objectID}`, {
           method: "GET",
           credentials: "include",
         });
         // eslint-disable-next-line
-        setLikes(Likes + 1);
         // eslint-disable-next-line
         const res = await Like.json();
       } catch (e) {}
@@ -65,14 +65,13 @@ const Details = (props) => {
   };
   const handleAddtoBookmark = async () => {
     if (context.user) {
+      setBookmarked(true);
       try {
         const res = await fetch(`${Server}/saveart/${artifact.objectID}`, {
           method: "GET",
           credentials: "include",
         });
-        const data = await res.json(); 
-        setContext({ user: data });
-        setBookmarked(true);
+        const data = await res.json();  
       } catch (e) {}
     }
     else{

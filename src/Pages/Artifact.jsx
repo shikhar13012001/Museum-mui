@@ -35,18 +35,10 @@ const Artifact = (props) => {
     try {
       setInfo(null);
       let img = await fetch(
-        `https://afternoon-bayou-41725.herokuapp.com/object/${ID}`
+        `https://collectionapi.metmuseum.org/public/collection/v1/objects/${ID}`
       );
 
-      const temp = await img.json();
-      if (!temp || !temp.objectID) {
-        img = await fetch(
-          `https://collectionapi.metmuseum.org/public/collection/v1/objects/${ID}`
-        );
-        await fetch(`https://afternoon-bayou-41725.herokuapp.com/upload/${ID}`);
-      }
-
-      const data = temp && temp.objectID ? temp : await img.json();
+      const data = await img.json();
       setArtifact(data);
       console.log("additonal", data?.additionalImages);
       setPrimaryImage(data.primaryImageSmall);
@@ -69,8 +61,7 @@ const Artifact = (props) => {
     <div className="container" style={{ textAlign: "center" }}>
       <img
         src={PrimaryImage}
-        width="400px"
-        height="400px"
+       
         style={{ marginTop: "3em" }}
         alt=""
       />
@@ -81,7 +72,7 @@ const Artifact = (props) => {
         disableImagesLoaded={false} // default false
         // default false
         static // default false
-        style={{ marginTop: 4,display:'flex',justifyContent:'center' }}
+        style={{ marginTop: 4, display: "flex", justifyContent: "center" }}
       >
         {artifact.additionalImages.map((item, index) => (
           <img
@@ -107,7 +98,14 @@ const Artifact = (props) => {
           alignItems: "center",
         }}
       >
-        <p style={{ width: "80%", textAlign: "left", fontStyle: "italic" ,margin:"30px 0" }}>
+        <p
+          style={{
+            width: "80%",
+            textAlign: "left",
+            fontStyle: "italic",
+            margin: "30px 0",
+          }}
+        >
           {artiFactInfo ? artiFactInfo : <LinearProgress />}
         </p>
         <Details artifact={artifact} />

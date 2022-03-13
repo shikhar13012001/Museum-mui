@@ -4,25 +4,66 @@ import MasonryItem from "@mui/lab/MasonryItem";
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 import { withRouter } from "react-router";
+import { Typography } from "@mui/material";
+function arraysEqual(a, b) {
+  if (a === b) return true;
+  if (a == null || b == null) return false;
+  if (a.length !== b.length) return false;
+
+  // If you don't care about the order of the elements inside
+  // the array, you should sort both arrays here.
+  // Please note that calling sort on an array will modify that array.
+  // you might want to clone your array first.
+
+  for (var i = 0; i < a.length; ++i) {
+    if (a[i] !== b[i]) return false;
+  }
+  return true;
+}
 const Images = (props) => {
   const [images, setImages] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
-  useEffect(() => {
-    FetchData();
-    return;
+  const [isExtraLoaded, setIsExtraLoaded] = useState(false);
+  const listInnerRef = React.useRef();
+  const [page,setPage]=useState(1);
+  const onScroll = () => {
+    
+    if (listInnerRef.current) {
+      const { scrollTop, scrollHeight, clientHeight } = listInnerRef.current; 
+      if (Math.abs(scrollTop + clientHeight - scrollHeight)<=2) { 
+        setPage(p=>p+1);
+      }
+    }
+  };
+  useEffect(() => { 
+  setPage(1);
+  setImages([]);
+    FetchData(); 
     // eslint-disable-next-line
-  }, [props]);
-  const FetchData = React.useCallback(async () => {
+  }, [props.match.params.id]);
+  useEffect(() => {
+     
+      FetchData(); 
+      // eslint-disable-next-line
+    }, [page]);
+  const FetchData = async () => {
     //departments
     try {
+      if(page===1)
+      {
       setIsLoaded(false);
+      }
+      else
+      {
+        setIsExtraLoaded(false)
+      }
       const res = await fetch(
         `https://collectionapi.metmuseum.org/public/collection/v1/search?has_images=true&q=${props.name}`
       );
       const data = await res.json();
       let images_collect = [];
-      const Promises = [];
-      for (let i = 0; i < Math.min(data.objectIDs.length, 30); i++) {
+      const Promises = []; 
+      for (let i = 30*(page-1); i < Math.min(data.objectIDs.length,page*30); i++) {
         try {
           Promises.push(
             fetch(
@@ -30,7 +71,9 @@ const Images = (props) => {
             )
           );
  
-        } catch (e) {}
+        } catch (e) {
+          console.log(e);
+        }
       }
 
       const img_data = await Promise.all(Promises);
@@ -38,21 +81,41 @@ const Images = (props) => {
         img_data.map((img) => img.json())
       );
       const response = await images_collect_data;
-      console.log(response);
-      for (let i = 0; i < Math.min(data.objectIDs.length, 30); i++) {
+   
+      for (let i =0; i < response.length; i++) {
+       if(!response[i])
+       {
+         continue;
+       }
         const obj = {
           original: response[i].primaryImageSmall,
           thumbnail: response[i].primaryImageSmall,
           id: data.objectIDs[i],
         };
-
+     
         images_collect.push(obj);
       }
-      setImages(images_collect);
+      
+      if(!arraysEqual(images,images_collect))
+      {
+      setImages([...images,...images_collect]);
+      }
+      if(page===1)
+      {
       setIsLoaded(true);
+      setIsExtraLoaded(true)
+
+      }
+      else
+      {
+        setIsExtraLoaded(true)
+      }
+      
       return images_collect;
-    } catch (e) {}
-  }, [props.name]);
+    } catch (e) {
+     console.log(e)
+    }
+  }
 
   return isLoaded === false ? (
     <Box
@@ -74,21 +137,29 @@ const Images = (props) => {
         height: 250,
         overflow: "auto",
       }}
+      onScroll={onScroll}
+      ref={listInnerRef}
     >
-      <Masonry
+     {images.length>0?(<Masonry
         columns={props.columns || { xs: 4, sm: 5, md: 10, lg: 15 }}
         spacing={{ xs: 1, sm: 2, md: 2 }}
       >
         {images.map((item, index) => (
           <MasonryItem key={index}>
             <img
-              src={`${item.original}`}
+              src={`${item.thumbnail}`}
               alt={item.title}
               onClick={(e) => props.history.push(`/artifact/${item.id}`)}
             />
+           
           </MasonryItem>
         ))}
-      </Masonry>
+        {isExtraLoaded?null:<CircularProgress />}
+      </Masonry>):
+      (<Typography variant="h6" color="textSecondary" align="center">
+        No Images Found
+      </Typography>)
+      }
     </Box>
   );
 };

@@ -128,7 +128,7 @@ exports.artifactInfo = async (req, res) => {
     uri: "https://app.scrapingbee.com/api/v1?",
     qs: {
       api_key:
-        "KKH5L4NWHS7IL1OHMS5S84QAOVJDSMTFJKZ4D1YUFE9BS09SILZ4TC2WO5CWZE1WJEWJET4I09KDM7S7",
+        "34TOQQ77QJALLR07ISPYL4B5EYHW3YLU5GM97GQOCA32BVW3S0S6RTVFCZGTHZ1Q5MHH1Z9GZ0B640LI",
       url: `https://www.metmuseum.org/art/collection/search/${node}`,
     },
   };

@@ -13,6 +13,8 @@ import TEXTURE from "../assests/textQR.webp";
 import Pattern from "../assests/Group 1.webp";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import PodCast from "../components/Podcast";
+import { Typography } from "@mui/material";
 
 const Home = () => {
   const [loading, setLoading] = React.useState(true);
@@ -49,6 +51,20 @@ const Home = () => {
           />
           <MockUp />
           <Video />
+        </Container>
+        <Container sx={{mt:8}}>
+          <Typography variant="h2" sx={{ textAlign: "left" ,mt:10,mb:5, fontFamily: "'Vujahday Script', cursive",}}>
+            You can tune in to our Podcast
+          </Typography>
+          <iframe
+            style={{ borderRadius: "12px" }}
+            src="https://open.spotify.com/embed/show/3xnvpzOU0BQoczbarnCkiZ?utm_source=generator&t=0"
+            width="80%"
+            height="152"
+            frameBorder="0"
+            allowFullScreen
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          ></iframe>
         </Container>
         <div style={{ height: "7em" }}></div>
         <h1
