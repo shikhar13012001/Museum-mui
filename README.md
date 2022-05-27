@@ -1,5 +1,5 @@
 #  Museum Site
-
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b1520595-f28e-4de7-9562-efacb766a0ad/deploy-status)](https://app.netlify.com/sites/sonofogrelouvre/deploys)
 ### Motivation
 <p> Artist and artifacts are more praised but less explored
 This project is an effort to preserve the art and craft o the history </p>
