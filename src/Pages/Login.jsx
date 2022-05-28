@@ -15,7 +15,7 @@ import IconButton from "@mui/material/IconButton";
 import Collapse from "@mui/material/Collapse";
 import CloseIcon from "@mui/icons-material/Close";
 import LOGO from "../assests/Logo (2).webp";
-import Backdrop from "../components/Backdrop"
+import Backdrop from "../components/Backdrop";
 function Copyright(props) {
   return (
     <Typography
@@ -38,13 +38,13 @@ const theme = createTheme();
 
 const SignInSide = (props) => {
   const [err, setErr] = React.useState(null);
-   const [open, setOpen] = React.useState(false);
-   const handleClose = () => {
-     setOpen(false);
-   };
-   const handleToggle = () => {
-     setOpen(!open);
-   };
+  const [open, setOpen] = React.useState(false);
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const handleOpen = () => {
+    setOpen(!open);
+  };
 
   const handleSubmit = async (event) => {
     try {
@@ -67,9 +67,14 @@ const SignInSide = (props) => {
       if (data2.user) {
         props.handleAuth(data2.user);
         props.history.push("/");
-      } else setErr(true);
+        handleClose();
+      } else {
+        setErr(true);
+        handleClose();
+      }
     } catch (e) {
       setErr(true);
+      handleClose();
     }
   };
 
@@ -103,10 +108,7 @@ const SignInSide = (props) => {
               alignItems: "center",
             }}
           >
-            <img
-              src={LOGO}
-              alt=""
-            />
+            <img src={LOGO} alt="" />
 
             <Typography component="h1" variant="h5">
               Sign in
