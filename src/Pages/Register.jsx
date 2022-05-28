@@ -11,6 +11,8 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import server from "../utils/server";
 import { withRouter } from "react-router-dom";
 import LOGO from "../assests/Logo (2).webp";
+import Backdrop from "../components/Backdrop";
+
 function Copyright(props) {
   return (
     <Typography
@@ -31,8 +33,17 @@ function Copyright(props) {
 
 const theme = createTheme();
 const SignUp = (props) => {
+   const [open, setOpen] = React.useState(false);
+   const handleClose = () => {
+     setOpen(false);
+   };
+   const handleOpen = () => {
+     setOpen(true);
+   };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+    handleOpen()
     const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
     const User = await fetch(`${server}/register`, {
@@ -49,6 +60,7 @@ const SignUp = (props) => {
     if (res.user) {
       props.handleAuth(res.user);
       props.history.push("/");
+      handleClose();
     }
   };
 
@@ -56,6 +68,7 @@ const SignUp = (props) => {
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
+        <Backdrop open={open} setOpen={setOpen} />
         <Box
           sx={{
             marginTop: 8,
