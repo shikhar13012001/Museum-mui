@@ -23,7 +23,7 @@ function Copyright(props) {
     >
       {"Copyright © "}
       <Link color="inherit" href="https://mui.com/">
-      https://sonofogrelouvre.netlify.app
+        https://sonofogrelouvre.netlify.app
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -33,17 +33,17 @@ function Copyright(props) {
 
 const theme = createTheme();
 const SignUp = (props) => {
-   const [open, setOpen] = React.useState(false);
-   const handleClose = () => {
-     setOpen(false);
-   };
-   const handleOpen = () => {
-     setOpen(true);
-   };
+  const [open, setOpen] = React.useState(false);
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const handleOpen = () => {
+    setOpen(true);
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    handleOpen()
+    handleOpen();
     const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
     const User = await fetch(`${server}/register`, {
@@ -56,7 +56,7 @@ const SignUp = (props) => {
         password: data.get("password"),
       }),
     });
-    const res = await User.json(); 
+    const res = await User.json();
     if (res.user) {
       props.handleAuth(res.user);
       props.history.push("/");
@@ -77,10 +77,7 @@ const SignUp = (props) => {
             alignItems: "center",
           }}
         >
-          <img
-            src={LOGO}
-            alt=""
-          />
+          <img src={LOGO} alt="" />
 
           <Typography component="h1" variant="h5">
             Sign up

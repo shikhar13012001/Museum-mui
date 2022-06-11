@@ -3,6 +3,8 @@ import Container from "@mui/material/Container";
 import Divider from "@mui/material/Divider";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
+import IMAGE from "../assests/louvre.jpg";
+import { Typography } from "@mui/material";
 const style = {
   fontFamily: "'Vujahday Script', cursive",
   fontWeight: 100,
@@ -17,26 +19,18 @@ const History = (props) => {
         <Grid
           item
           xs={16}
-          lg={10}
+          lg={16}
           sm={16}
           data-aos="zoom-out-right"
           data-aos-easing="ease-out-cubic"
           data-aos-duration="1000"
         >
-          <img
-            src={
-              props.image ||
-              "https://media.tacdn.com/media/attractions-splice-spp-674x446/07/36/8f/25.jpg"
-            }
-            width="100%"
-            height="auto"
-            alt=""
-          />
+          <img src={props.image || IMAGE} width="100%" height="auto" alt="" />
         </Grid>
         <Grid
           item
           xs={16}
-          lg={6}
+          lg={16}
           sm={16}
           sx={{
             display: "flex",
@@ -54,31 +48,29 @@ const History = (props) => {
               textAlign: "center",
             }}
           />
-          <p
-            style={{ fontWeight: "500", maxWidth: "80vw" }}
+          <Typography
+            variant="h2"
+            sx={{ mb: 5, textAlign: "left", width: "100%" }}
+          >
+            The architecture of the Louvre.
+          </Typography>
+          <Typography
+            style={{ fontWeight: "500", maxWidth: "80vw", fontSize: "1.5em" }}
             data-aos="fade-left"
             data-aos-anchor="#example-anchor"
             data-aos-offset="500"
             data-aos-duration="500"
           >
-            The Louvre Palace, which houses the museum, was begun by King Philip
-            II in the late 12th century to protect the city from the attack from
-            the West, as the Kingdom of England still held Normandy at the time.
-            Remnants of the Medieval Louvre are still visible in the
-            crypt.Whether this was the first building on that spot is not known,
-            and it is possible that Philip modified an existing tower. The
-            origins of the name "Louvre" are somewhat disputed. According to the
-            authoritative Grand Larousse encyclopédique, the name derives from
-            an association with wolf hunting den (via Latin: lupus, lower
-            Empire: lupara). In the 7th century, Burgundofara (also known as
-            Saint Fare), abbess in Meaux, is said to have gifted part of her .
-          </p>
-          <Button
-            variant="contained"
-            sx={{ backgroundColor: "black", width: "80%", marginTop: "5em" }}
-          >
-            View Wiki
-          </Button>
+            The story begins near the remains of the first Louvre, a medieval
+            fortress built by King Philippe-Auguste in about 1200. Follow the
+            fortress wall to find the Salle de la Maquette, dedicated to the
+            architecture of the Louvre. The presentation explains the many
+            transformations that have marked the history of the palace and the
+            ornamental additions made by great artists, from Jean Goujon who
+            carved many decorative elements in the 16th century to Jean-Baptiste
+            Carpeaux who designed sculptures for the Pavillon de Flore three
+            centuries later.
+          </Typography>
         </Grid>
       </Grid>
     </Container>

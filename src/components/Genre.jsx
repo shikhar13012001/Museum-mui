@@ -15,7 +15,9 @@ const Genre = () => {
   const FetchData = async () => {
     let gallery = [];
 
-    const res = await fetch("https://afternoon-bayou-41725.herokuapp.com/culture");
+    const res = await fetch(
+      "https://afternoon-bayou-41725.herokuapp.com/culture"
+    );
     const datum = await res.json();
 
     for (let j = 0; j < datum.culture.length; j++) {

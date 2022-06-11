@@ -10,10 +10,9 @@ import hoverEffect from "hover-effect";
 import IMAGE1 from "../assests/GreekGod.webp";
 import IMAGE2 from "../assests/GreekGod2.webp";
 import TEXTURE from "../assests/textQR.webp";
-import Pattern from "../assests/Group 1.webp";
+import { HiOutlineArrowRight } from "react-icons/hi";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import PodCast from "../components/Podcast";
 import { Typography } from "@mui/material";
 
 const Home = () => {
@@ -41,43 +40,61 @@ const Home = () => {
 
         <Container sx={{ width: "100%", height: "fit-content" }}>
           <Events />
-          <img
+          {/* <img
             src={Pattern}
             alt="pattern"
             className="pattern"
             data-aos="zoom-out-right"
             data-aos-easing="ease-out-cubic"
             data-aos-duration="1000"
-          />
+          /> */}
           <MockUp />
           <Video />
         </Container>
-        <Container sx={{mt:8}}>
-          <Typography variant="h2" sx={{ textAlign: "left" ,mt:10,mb:5, fontFamily: "'Vujahday Script', cursive",}}>
+        <Container sx={{ mt: 8 }}>
+          <Typography
+            variant="h2"
+            sx={{
+              textAlign: "left",
+              mt: 10,
+              mb: 5,
+              fontFamily: "'Vujahday Script', cursive",
+            }}
+          >
             You can tune in to our Podcast
           </Typography>
           <iframe
-            style={{ borderRadius: "12px" }}
-            src="https://open.spotify.com/embed/show/3xnvpzOU0BQoczbarnCkiZ?utm_source=generator&t=0"
-            width="80%"
-            height="152"
+            title="podcast"
+            src="https://open.spotify.com/embed/episode/4EYuyvPQ4wae4ebGVaODKp?utm_source=generator"
+            width="100%"
+            height="332"
             frameBorder="0"
-            allowFullScreen
+            allowfullscreen=""
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           ></iframe>
         </Container>
         <div style={{ height: "7em" }}></div>
-        <h1
-          style={{
+        <Typography
+          sx={{
             fontSize: "5.5em",
-            marginBottom: 20,
+            marginBottom: 1,
             textAlign: "center",
-            fontFamily: "'Vujahday Script', cursive",
           }}
         >
           {" "}
           View the HighLights
-        </h1>
+        </Typography>
+        <Typography
+          variant="body1"
+          sx={{
+            textAlign: "center",
+            alignItems: "center",
+            display: "flex",
+            fontSize: 30,
+          }}
+        >
+          Swipe to the right to view more <HiOutlineArrowRight />
+        </Typography>
         <HighLights />
 
         <History />

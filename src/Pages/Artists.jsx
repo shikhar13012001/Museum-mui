@@ -5,13 +5,13 @@ import data from "../Artist.config.data";
 import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
+import { Typography, Box } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { useHistory, Link } from "react-router-dom";
 // import "fullpage.js/vendors/scrolloverflow"; // Optional. When using scrollOverflow:true
 // import ReactFullpage from "@fullpage/react-fullpage";
 import "../Flickity.css";
 import Masonry from "react-masonry-css";
-import ArtistHighlight from "../components/CollectionHighlight";
 const style = {
   wrapper: {
     // height: "20em",
@@ -59,7 +59,6 @@ const Artists = (props) => {
         height: Math.max(Math.random() * 500, 300),
         width: 270,
       }}
-     
     >
       <div style={{ position: "absolute", bottom: 0 }}>
         <div
@@ -75,25 +74,21 @@ const Artists = (props) => {
         >
           {index + 1}
         </div>
-        <h1 style={{ fontFamily: '"Bebas Neue", cursive', color: "white" }} >
+        <h1 style={{ fontFamily: '"Bebas Neue", cursive', color: "white" }}>
           {item.Artist}
         </h1>
       </div>
     </div>
   );
-  const options = {
-    wrapAround: true,
-    freeScroll: true,
-    initialIndex: 2,
-  };
+
   const u =
     "https://c4.wallpaperflare.com/wallpaper/743/193/102/vincent-van-gogh-painting-the-starry-night-classic-art-wallpaper-preview.jpg";
   return (
     <>
       <Banner img={u} show={props.show || false} />
-      <h2 style={{ textAlign: "center" }}>Artworks of the day</h2>
-      <ArtistHighlight query={"vermeer"} />
-      <h1 style={{ textAlign: "center" }}>The Artists</h1>
+      <Typography variant="h2" style={{ textAlign: "center" }}>
+        The Artists
+      </Typography>
 
       <Container
         sx={{
@@ -126,6 +121,7 @@ const Artists = (props) => {
             inputProps={{ "aria-label": "search google maps" }}
             onChange={(e) => {
               setSearchData(e.target.value);
+              handleSearch(e);
             }}
             onSubmit={handleSearch}
           />
@@ -138,18 +134,15 @@ const Artists = (props) => {
             <SearchIcon />
           </IconButton>
         </Paper>
+
         <Masonry
           breakpointCols={breakpointColumnsObj}
           className="my-masonry-grid"
           columnClassName="my-masonry-grid_column"
         >
           {AllArtist.map((item, index) => (
-            <Link to={`/artwork/${index}`} >
-              <NewArtist
-                item={item}
-                index={index}
-              
-              />
+            <Link to={`/artwork/${index}`}>
+              <NewArtist item={item} index={index} />
             </Link>
           ))}
         </Masonry>

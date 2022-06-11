@@ -136,7 +136,7 @@ exports.artifactInfo = async (req, res) => {
     .then((response) => {
       const $ = cheerio.load(response);
       const text = $(".artwork__intro__desc p").text();
-  
+
       if (!text) {
         res.json({ err: "No information available found for this artifact" });
       } else {

@@ -7,25 +7,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Vujahday+Script&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Luxurious+Roman&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100&display=swap");
+@font-face {
+  font-family: "Bosch";
+  src: url("./fonts/Bosch.otf");
+}
 * {
   font-weight: 100;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   color: rgb(0, 0, 0);
-  font-family: "Playfair Display", serif;
-  text-shadow: 1px 1px rgba(0, 0, 0, 0.01), 2px 2px rgba(0, 0, 0, 0.03),
-    3px 3px rgba(0, 0, 0, 0.025), 4px 4px rgba(0, 0, 0, 0.02),
-    5px 5px rgba(0, 0, 0, 0.015), 6px 6px rgba(0, 0, 0, 0.01),
-    7px 7px rgba(0, 0, 0, 0.01), 8px 8px rgba(0, 0, 0, 0.01),
-    9px 9px rgba(0, 0, 0, 0.01), 10px 10px rgba(0, 0, 0, 0.01),
-    11px 11px rgba(0, 0, 0, 0.01), 12px 12px rgba(0, 0, 0, 0.01),
-    13px 13px rgba(0, 0, 0, 0.01), 14px 14px rgba(0, 0, 0, 0.01),
-    15px 15px rgba(0, 0, 0, 0.01), 16px 16px rgba(0, 0, 0, 0.01),
-    17px 17px rgba(0, 0, 0, 0.01), 18px 18px rgba(0, 0, 0, 0.01),
-    19px 19px rgba(0, 0, 0, 0.01), 20px 20px rgba(0, 0, 0, 0.01),
-    21px 21px rgba(0, 0, 0, 0.01), 22px 22px rgba(0, 0, 0, 0.01),
-    23px 23px rgba(0, 0, 0, 0.01);
+  font-family: "Bosch", sans-serif !important;
 }
 span {
   font-family: "Roboto Mono", monospace;
@@ -255,14 +247,14 @@ canvas {
   );
 }
 .GenreItem {
-  width: 60vw;
-  height: 300px;
+  width: 300px;
+  height: 400px;
   display: flex;
   flex-direction: column;
 }
 .GenreImage {
-  width: 60vw;
-  height: 220px;
+  width: 300px;
+  height: 400px;
   border: none;
   border-radius: 15px;
   background-position: center;
@@ -273,8 +265,8 @@ canvas {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 60vw;
-  height: 80px;
+  width: 300px;
+  height: 400px;
 }
 .GenreDescription > h1 {
   text-align: center;
@@ -533,7 +525,6 @@ input[type="file"] {
   height: 13em;
 }
 
-
 .sqs-announcement-bar-footer {
   height: fit-content;
   font-family: "JetBrains Mono", monospace;
@@ -541,7 +532,7 @@ input[type="file"] {
   font-weight: bold;
   text-align: center;
   color: white;
-  background:black;
+  background: black;
 }
 
 .sqs-announcement-bar {
@@ -549,20 +540,17 @@ input[type="file"] {
   font-family: "JetBrains Mono", monospace;
   font-weight: bold;
   text-align: center;
+  padding: 15px;
   color: white;
-  background: rgb(63, 94, 251);
-  background: radial-gradient(
-    circle,
-    rgba(63, 94, 251, 1) 0%,
-    rgba(252, 70, 107, 1) 100%
-  ) !important;
+  background: black !important;
 }
 
 @media only screen and (min-width: 321px) and (max-width: 768px) {
   .pattern {
     display: none;
   }
-  .sqs-announcement-bar,.sqs-announcement-bar-footer {
+  .sqs-announcement-bar,
+  .sqs-announcement-bar-footer {
     font-size: 0.55em;
   }
 }
@@ -571,7 +559,27 @@ input[type="file"] {
   .pattern {
     display: none;
   }
-  .sqs-announcement-bar,.sqs-announcement-bar-footer {
+  .sqs-announcement-bar,
+  .sqs-announcement-bar-footer {
     font-size: 0.55em;
+  }
+}
+
+.circular-text,
+.text-video {
+  font-size: 40px;
+  font-weight: bold;
+  /* rotation animation
+   */
+  -webkit-animation: spin 2s linear infinite;
+  -moz-animation: spin 2s linear infinite;
+  animation: spin 10s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

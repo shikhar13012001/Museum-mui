@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Grid from "@mui/material/Grid";
+import { Typography, Grid } from "@mui/material";
 import Container from "@mui/material/Container";
 import Details from "./Details";
 import { Link } from "react-router-dom";
@@ -15,8 +15,8 @@ const SearchItem = (props) => {
   });
   return (
     <Grid
-    data-aos="fade-up"
-     data-aos-duration="1000"
+      data-aos="fade-up"
+      data-aos-duration="1000"
       container
       columns={16}
       sx={{
@@ -50,11 +50,13 @@ const SearchItem = (props) => {
         lg={12}
         sx={{ textAlign: "center", position: "relative" }}
       >
-        <h1> {item.title} </h1>
-        <h3 style={{ fontSize: "20px" }}>{item.artistDisplayName}</h3>
-        <h3 style={{ fontSize: "20px" }}>
+        <Typography variant="h3"> {item.title} </Typography>
+        <Typography variant="h3" sx={{ fontSize: "25px" }}>
+          {item.artistDisplayName}
+        </Typography>
+        <Typography variant="h3" color="GrayText" sx={{ fontSize: "25px" }}>
           {item.objectBeginDate + `-` + item.objectEndDate}
-        </h3>
+        </Typography>
         <Container sx={{ width: "100%" }}>
           <Details artifact={item} />
         </Container>

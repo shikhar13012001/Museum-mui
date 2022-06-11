@@ -33,9 +33,7 @@ const Genre = (props) => {
           //   id: datum.objectIDs[j],
           //   item: r,
           // });
-        } catch (e) {
-          
-        }
+        } catch (e) {}
       }
       const reponse = await Promise.all(Promises);
       const objects = Promise.all(reponse.map((r) => r.json()));
@@ -47,11 +45,9 @@ const Genre = (props) => {
           item: response_objects[i],
         });
       }
-        setData(gallery);
-        setLoaded(true);
-    } catch (e) {
-
-    }
+      setData(gallery);
+      setLoaded(true);
+    } catch (e) {}
   };
 
   return isLoaded === false ? (

@@ -25,52 +25,46 @@ const Images = (props) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isExtraLoaded, setIsExtraLoaded] = useState(false);
   const listInnerRef = React.useRef();
-  const [page,setPage]=useState(1);
+  const [page, setPage] = useState(1);
   const onScroll = () => {
-    
     if (listInnerRef.current) {
-      const { scrollTop, scrollHeight, clientHeight } = listInnerRef.current; 
-      if (Math.abs(scrollTop + clientHeight - scrollHeight)<=2) { 
-        setPage(p=>p+1);
+      const { scrollTop, scrollHeight, clientHeight } = listInnerRef.current;
+      if (Math.abs(scrollTop + clientHeight - scrollHeight) <= 2) {
+        setPage((p) => p + 1);
       }
     }
   };
-  useEffect(() => { 
-  setPage(1);
-  setImages([]);
-    FetchData(); 
+  useEffect(() => {
+    setPage(1);
+    setImages([]);
+    FetchData();
     // eslint-disable-next-line
   }, [props.match.params.id]);
   useEffect(() => {
-     
-      FetchData(); 
-      // eslint-disable-next-line
-    }, [page]);
+    FetchData();
+    // eslint-disable-next-line
+  }, []);
   const FetchData = async () => {
     //departments
     try {
-      if(page===1)
-      {
-      setIsLoaded(false);
-      }
-      else
-      {
-        setIsExtraLoaded(false)
+      if (page === 1) {
+        setIsLoaded(false);
+      } else {
+        setIsExtraLoaded(false);
       }
       const res = await fetch(
         `https://collectionapi.metmuseum.org/public/collection/v1/search?has_images=true&q=${props.name}`
       );
       const data = await res.json();
       let images_collect = [];
-      const Promises = []; 
-      for (let i = 30*(page-1); i < Math.min(data.objectIDs.length,page*30); i++) {
+      const Promises = [];
+      for (let i = 0; i < Math.min(data.objectIDs.length, 30); i++) {
         try {
           Promises.push(
             fetch(
               `https://collectionapi.metmuseum.org/public/collection/v1/objects/${data.objectIDs[i]}`
             )
           );
- 
         } catch (e) {
           console.log(e);
         }
@@ -81,41 +75,35 @@ const Images = (props) => {
         img_data.map((img) => img.json())
       );
       const response = await images_collect_data;
-   
-      for (let i =0; i < response.length; i++) {
-       if(!response[i])
-       {
-         continue;
-       }
+
+      for (let i = 0; i < response.length; i++) {
+        if (!response[i]) {
+          continue;
+        }
         const obj = {
           original: response[i].primaryImageSmall,
           thumbnail: response[i].primaryImageSmall,
           id: data.objectIDs[i],
         };
-     
+
         images_collect.push(obj);
       }
-      
-      if(!arraysEqual(images,images_collect))
-      {
-      setImages([...images,...images_collect]);
-      }
-      if(page===1)
-      {
-      setIsLoaded(true);
-      setIsExtraLoaded(true)
 
+      if (!arraysEqual(images, images_collect)) {
+        setImages([...images, ...images_collect]);
       }
-      else
-      {
-        setIsExtraLoaded(true)
+      if (page === 1) {
+        setIsLoaded(true);
+        setIsExtraLoaded(true);
+      } else {
+        setIsExtraLoaded(true);
       }
-      
+
       return images_collect;
     } catch (e) {
-     console.log(e)
+      console.log(e);
     }
-  }
+  };
 
   return isLoaded === false ? (
     <Box
@@ -140,26 +128,27 @@ const Images = (props) => {
       onScroll={onScroll}
       ref={listInnerRef}
     >
-     {images.length>0?(<Masonry
-        columns={props.columns || { xs: 4, sm: 5, md: 10, lg: 15 }}
-        spacing={{ xs: 1, sm: 2, md: 2 }}
-      >
-        {images.map((item, index) => (
-          <MasonryItem key={index}>
-            <img
-              src={`${item.thumbnail}`}
-              alt={item.title}
-              onClick={(e) => props.history.push(`/artifact/${item.id}`)}
-            />
-           
-          </MasonryItem>
-        ))}
-        {isExtraLoaded?null:<CircularProgress />}
-      </Masonry>):
-      (<Typography variant="h6" color="textSecondary" align="center">
-        No Images Found
-      </Typography>)
-      }
+      {images.length > 0 ? (
+        <Masonry
+          columns={props.columns || { xs: 4, sm: 5, md: 10, lg: 15 }}
+          spacing={{ xs: 1, sm: 2, md: 2 }}
+        >
+          {images.map((item, index) => (
+            <MasonryItem key={index}>
+              <img
+                src={`${item.thumbnail}`}
+                alt={item.title}
+                onClick={(e) => props.history.push(`/artifact/${item.id}`)}
+              />
+            </MasonryItem>
+          ))}
+          {/* {isExtraLoaded?null:<CircularProgress />} */}
+        </Masonry>
+      ) : (
+        <Typography variant="h6" color="textSecondary" align="center">
+          No Images Found
+        </Typography>
+      )}
     </Box>
   );
 };

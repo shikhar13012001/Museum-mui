@@ -7,7 +7,7 @@ const Banner = (props) => {
       sx={{
         marginTop: "2em",
         width: "100%",
-        height: props.show ? 250 : 0,
+        height: props.show ? 350 : 0,
         backgroundImage: `url(${props.img})`,
         backgroundSize: "cover",
         backgroundPositionY: "-200px",

@@ -1,16 +1,16 @@
-import React from 'react'
+import React from "react";
 
 const loading = () => {
-    return (
-        <div className="container2">
-        <div className="loader">
+  return (
+    <div className="container2">
+      <div className="loader">
         <span></span>
         <span></span>
         <span></span>
         <span></span>
+      </div>
     </div>
-    </div>
-    )
-}
+  );
+};
 
-export default loading
+export default loading;

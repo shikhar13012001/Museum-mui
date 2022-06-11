@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { config } from "react-spring";
 import CircularProgress from "@mui/material/CircularProgress";
-import Carousel from "react-spring-3d-carousel"
+import Carousel from "react-spring-3d-carousel";
 import Box from "@mui/material/Box";
 import MediumItem from "../components/MediumItem";
 const Genre = () => {
@@ -41,7 +41,7 @@ const Genre = () => {
         <Box
           sx={{
             width: "100%",
-            height: "300px",
+            height: "500px",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",

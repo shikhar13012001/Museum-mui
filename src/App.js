@@ -17,8 +17,10 @@ import { Context } from "./Context/AuthContext";
 import Profile from "./Pages/Profile";
 import { Redirect } from "react-router-dom";
 import AnnouncementBar from "./components/AnnouncementBar";
-import Logo from './assests/Logo \(2).webp'
-import Container from '@mui/material/Container'
+import Logo from "./assests/Logo (2).webp";
+import Container from "@mui/material/Container";
+import { ParallaxProvider } from "react-scroll-parallax";
+import "animate.css";
 function App() {
   const [User, setUser] = React.useState(null);
   const [auth, setAuth] = React.useState(null);
@@ -40,9 +42,8 @@ function App() {
   React.useEffect(() => {
     FetchUser();
   }, [auth]);
-  return (
-    User ?(
-      <>
+  return User ? (
+    <ParallaxProvider>
       <Context.Provider value={[context, setContext]}>
         <Router>
           <AnnouncementBar />
@@ -70,9 +71,17 @@ function App() {
           </Switch>
         </Router>
       </Context.Provider>
-          <Footer />
-          </>
-    ):<Container sx={{width:"100%",height:'100vh',display:'grid',placeContent:'center'}}>
+      <Footer />
+    </ParallaxProvider>
+  ) : (
+    <Container
+      sx={{
+        width: "100%",
+        height: "100vh",
+        display: "grid",
+        placeContent: "center",
+      }}
+    >
       <img src={Logo} alt="logo" />
     </Container>
   );

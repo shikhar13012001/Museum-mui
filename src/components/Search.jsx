@@ -32,7 +32,7 @@ export default function CustomizedInputBase() {
         `https://collectionapi.metmuseum.org/public/collection/v1/search?q=${search}`
       );
       const res = await data.json();
-      
+
       const Promises = [];
       for (let i = 0; i < Math.min(res.total, 20); i++) {
         Promises.push(

@@ -24,7 +24,10 @@ const Home = (props) => {
       },
       {
         text: context?.user ? (
-          <Chip avatar={<Avatar src={context?.user?.profileImg}></Avatar>} label={props.user.name} />
+          <Chip
+            avatar={<Avatar src={context?.user?.profileImg}></Avatar>}
+            label={props.user.name}
+          />
         ) : (
           "Login"
         ),
@@ -47,6 +50,8 @@ const Home = (props) => {
       barStyles: {
         background: "#0000",
         position: "relative",
+        boxShadow: "none",
+        borderBottom: "1px solid black",
         zIndex: 100,
       },
       sidebarStyles: {

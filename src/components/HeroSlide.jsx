@@ -22,7 +22,7 @@ const HeroSliderConfigs = {
 };
 
 // slider component
-const HeroSlider = (props) => { 
+const HeroSlider = (props) => {
   const [parallaxSwiper, setParallaxSwiper] = useState(null);
   const parallaxAmount = parallaxSwiper ? parallaxSwiper.width * 0.95 : 0;
   const parallaxOpacity = 0.5;

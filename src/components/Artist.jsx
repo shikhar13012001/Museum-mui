@@ -8,7 +8,13 @@ export default function ActionAreaCard({ item, index }) {
       style={{ margin: "10px", verticalAlign: "center", textAlign: "center" }}
     >
       <Link to={`/artwork/${index}`}>
-        <img src={item.image} width="200px" height="300px" className="zoom" alt=""/>
+        <img
+          src={item.image}
+          width="200px"
+          height="300px"
+          className="zoom"
+          alt=""
+        />
         <h2>{item.Artist}</h2>
         <h4>{item.Date}</h4>
       </Link>

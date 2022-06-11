@@ -12,6 +12,7 @@ import Alert from "@mui/material/Alert";
 import IconButton from "@mui/material/IconButton";
 import Collapse from "@mui/material/Collapse";
 import CloseIcon from "@mui/icons-material/Close";
+import { Typography } from "@mui/material";
 
 const Line = (props) => (
   <div
@@ -28,7 +29,7 @@ const Details = (props) => {
   const [copied, setCopied] = React.useState(null);
   const { artifact } = props;
   const [Likes, setLikes] = React.useState(0);
-  const [context, setContext] = React.useContext(Context); 
+  const [context, setContext] = React.useContext(Context);
   const [isBookmarked, setBookmarked] = React.useState(
     context?.user?.liked?.includes(artifact.objectID.toString()) || false
   );
@@ -61,7 +62,9 @@ const Details = (props) => {
 
     const data = await res.json();
     setLikes(data.likes);
-    setBookmarked(context?.user?.liked?.includes(artifact.objectID.toString())||false);
+    setBookmarked(
+      context?.user?.liked?.includes(artifact.objectID.toString()) || false
+    );
   };
   const handleAddtoBookmark = async () => {
     if (context.user) {
@@ -71,43 +74,42 @@ const Details = (props) => {
           method: "GET",
           credentials: "include",
         });
-        const data = await res.json();  
+        const data = await res.json();
       } catch (e) {}
-    }
-    else{
-      props.history.push('/login')
+    } else {
+      props.history.push("/login");
     }
   };
   return (
     <div className="details">
-      <span>
+      <Typography sx={{ fontSize: 20 }}>
         <strong style={{ fontWeight: "bold" }}>Title: </strong>
         {artifact.title}
-      </span>
-      <span>
+      </Typography>
+      <Typography sx={{ fontSize: 20 }}>
         <strong style={{ fontWeight: "bold" }}>Date: </strong>
         {`${artifact.objectBeginDate}-${artifact.objectEndDate}`}
-      </span>
-      <span>
+      </Typography>
+      <Typography sx={{ fontSize: 20 }}>
         <strong style={{ fontWeight: "bold" }}>Author: </strong>
         {artifact.artistDisplayName}
-      </span>
-      <span>
+      </Typography>
+      <Typography sx={{ fontSize: 20 }}>
         <strong style={{ fontWeight: "bold" }}>Medium: </strong>
         {artifact.medium}
-      </span>
-      <span>
+      </Typography>
+      <Typography sx={{ fontSize: 20 }}>
         <strong style={{ fontWeight: "bold" }}>Dimensions: </strong>
         {artifact.dimensions}
-      </span>
-      <span>
+      </Typography>
+      <Typography sx={{ fontSize: 20 }}>
         <strong style={{ fontWeight: "bold" }}>Muesuem: </strong>
         {artifact.repository}
-      </span>
-      <span>
+      </Typography>
+      <Typography sx={{ fontSize: 20 }}>
         <strong style={{ fontWeight: "bold" }}>Classification: </strong>
         {artifact.classification}
-      </span>
+      </Typography>
       <Collapse in={copied}>
         <Alert
           severity="success"

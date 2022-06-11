@@ -7,7 +7,7 @@ import Gallery from "../components/Gallery";
 import ExtraArtists from "./Artists";
 import server from "../utils/server";
 import LinearProgress from "@mui/material/LinearProgress";
-import { Container } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import Flickity from "react-flickity-component";
 const Line = (props) => (
   <div
@@ -56,40 +56,19 @@ const Artifact = (props) => {
   const options = {
     freeScroll: true,
     initialIndex: 2,
+    dots: false,
   };
   return artifact ? (
     <div className="container" style={{ textAlign: "center" }}>
-      <img
-        src={PrimaryImage}
-       
-        style={{ marginTop: "3em" }}
-        alt=""
-      />
+      <img src={PrimaryImage} style={{ marginTop: "3em" }} alt="" />
       <Line size={"100vw"} />
-      <Flickity
-        elementType={"div"} // default 'div'
-        options={options} // takes flickity options {}
-        disableImagesLoaded={false} // default false
-        // default false
-        static // default false
-        style={{ marginTop: 4, display: "flex", justifyContent: "center" }}
-      >
-        {artifact.additionalImages.map((item, index) => (
-          <img
-            src={item}
-            key={index}
-            alt=""
-            width="60px"
-            height="60px"
-            style={{ borderRadius: "10px", margin: "2px" }}
-            onClick={() => setPrimaryImage(item)}
-          />
-        ))}
-      </Flickity>
-      <h1 style={{ fontSize: "3em", textAlign: "center" }}>{artifact.title}</h1>
-      <h5 style={{ fontSize: "1.3em", color: "#5e5c5c" }}>
+
+      <Typography variant="h1" sx={{ textAlign: "center" }}>
+        {artifact.title}
+      </Typography>
+      <Typography variant="h3" sx={{ color: "#5e5c5c" }}>
         {artifact.artistDisplayName}
-      </h5>
+      </Typography>
 
       <Container
         sx={{
@@ -98,22 +77,27 @@ const Artifact = (props) => {
           alignItems: "center",
         }}
       >
-        <p
+        <Typography
+          variant="body1"
           style={{
             width: "80%",
+            fontSize: 21,
             textAlign: "left",
-            fontStyle: "italic",
             margin: "30px 0",
           }}
         >
           {artiFactInfo ? artiFactInfo : <LinearProgress />}
-        </p>
+        </Typography>
         <Details artifact={artifact} />
       </Container>
-      <h5 style={{ fontSize: "2em", marginBottom: "2em" }}>More Artifacts</h5>
+      <Typography variant="h4" sx={{ fontSize: "2em", marginBottom: "2em" }}>
+        More Artifacts
+      </Typography>
       <Gallery name={artifact.artistDisplayName} count={50} />
       <div style={{ marginBottom: "5em" }}></div>
-      <h5 style={{ fontSize: "2em", marginBottom: "2em" }}>More Artists</h5>
+      <Typography variant="h4" sx={{ fontSize: "2em", marginBottom: "2em" }}>
+        More Artists
+      </Typography>
       <ExtraArtists data={data} />
     </div>
   ) : (

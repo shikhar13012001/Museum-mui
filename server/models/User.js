@@ -19,9 +19,9 @@ const userSchema = new mongoose.Schema({
     type: [String],
     default: [],
   },
-  profileImg:{
-    type:String
-  }
+  profileImg: {
+    type: String,
+  },
 });
 const ArtifactSocialInfoSchema = mongoose.Schema({
   id: {
