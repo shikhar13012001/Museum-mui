@@ -75,8 +75,14 @@ const Home = () => {
         </Container>
         <div style={{ height: "7em" }}></div>
         <Typography
+        fontSize={{
+          xs:"3em",
+          sm:"3.8em",
+          md:"4.5em",
+          lg:"5.5em",
+        }}
           sx={{
-            fontSize: "5.5em",
+            
             marginBottom: 1,
             textAlign: "center",
           }}
@@ -86,11 +92,16 @@ const Home = () => {
         </Typography>
         <Typography
           variant="body1"
+          fontSize={{
+            xs:20,
+            sm:20,
+            md:24,
+            lg:30
+          }}
           sx={{
             textAlign: "center",
             alignItems: "center",
-            display: "flex",
-            fontSize: 30,
+            display: "flex", 
           }}
         >
           Swipe to the right to view more <HiOutlineArrowRight />

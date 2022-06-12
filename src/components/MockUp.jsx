@@ -35,9 +35,9 @@ const MockUp = () => {
         columns={12}
       >
         <Grid item xs={12} lg={6} md={12} className="home-container" sx={{display:'grid',placeContent:'center'}}>
-          <img src={Art1} width={400} height="auto" alt="art" ref={ref} />
+          <img src={Art1} width={"100%"} height="auto" alt="art" ref={ref} style={{maxWidth:400}} />
         </Grid>
-        <Grid item xs={12} lg={6} md={12} ref={ref2}>
+        <Grid item xs={12} lg={6} md={12} ref={ref2} sx={{display:'flex',alignItems:'center',flexDirection:'column'}}>
           <Typography variant="h4" className="circular-text" sx={{ m: 10 }}>
             LOUVRE MEAUX . LOUVRE MEAUX .
           </Typography>

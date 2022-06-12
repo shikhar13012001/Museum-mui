@@ -14,8 +14,7 @@ import { curveText } from "curvetext";
 
 const style = {
   fontFamily: "'Vujahday Script', cursive",
-  fontWeight: 100,
-  fontSize: "8em",
+  fontWeight: 100, 
   marginBottom: "1em",
 };
 
@@ -51,7 +50,18 @@ const History = (props) => {
   }, []);
   return (
     <Container sx={{ marginTop: 10 }}>
-      <h1 style={style}>{props.title || "Visit Louvre Today"}</h1>
+      <Typography
+        variant="h1"
+        fontSize={{
+          xs: "4em",
+          sm: "4.5em",
+          md: "5.5em",
+          lg: "6.5em",
+        }}
+        sx={style}
+      >
+        {props.title || "Visit Louvre Today"}
+      </Typography>
       <Grid container columns={16} spacing={2} sx={{ mb: 20 }}>
         <Grid item xs={16} lg={16} sm={16} data-aos="zoom-in-up">
           <ReactPlayer
@@ -89,7 +99,13 @@ const History = (props) => {
           />
           <Typography
             variant="body1"
-            style={{ fontWeight: "500", fontSize: 30,textAlign:'justify' }}
+            fontSize={{
+              xs:18,
+              sm:20,
+              md:24,
+              lg:30,
+            }}
+            style={{ fontWeight: "500", textAlign: "justify" }}
           >
             The Louvre Palace, which houses the museum, was begun by King Philip
             II in the late 12th century to protect the city from the attack from
@@ -120,10 +136,26 @@ const History = (props) => {
         </Grid>
       </Grid>
       <Grid container columns={12} sx={{ mb: 20 }}>
-        <Grid item lg={6} ref={ref}>
-          <img src={Art2} alt="art" style={{ width: 400, height: "auto" }} />
+        <Grid item xs={12} sm={12} md={12} lg={6} ref={ref}>
+          <img
+            src={Art2}
+            alt="art"
+            style={{ width: "100%", height: "auto", maxWidth: 400 }}
+          />
         </Grid>
-        <Grid item lg={6} ref={ref2}>
+        <Grid
+          item
+          xs={12}
+          sm={12}
+          md={12}
+          lg={6}
+          ref={ref2}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column",
+          }}
+        >
           <Box sx={{ position: "relative", m: 10 }}>
             <Typography
               variant="h4"
@@ -140,7 +172,16 @@ const History = (props) => {
         </Grid>
       </Grid>
       <Grid container columns={12} sx={{ mb: 30 }} spacing={4}>
-        <Grid item lg={6} ref={ref4}>
+        <Grid
+          item
+          lg={6}
+          ref={ref4}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column",
+          }}
+        >
           <Box sx={{ position: "relative", m: 10 }}>
             <Typography
               variant="h4"
@@ -155,16 +196,33 @@ const History = (props) => {
             museum in the world.
           </Typography>
         </Grid>
-        <Grid item lg={6} ref={ref3}>
-          <img src={Art3} alt="art" style={{ width: 400, height: "auto" }} />
+        <Grid item xs={12} sm={12} md={12} lg={6} ref={ref3}>
+          <img
+            src={Art3}
+            alt="art"
+            style={{ width: "100%", height: "auto", maxWidth: 400 }}
+          />
         </Grid>
       </Grid>
       <Grid container columns={12} sx={{ mb: 30 }}>
-        <Grid item lg={6} ref={ref5}>
-          <img src={Art4} alt="art" style={{ width: 400, height: "auto" }} />
+        <Grid item xs={12} sm={12} md={12} lg={6} ref={ref5}>
+          <img
+            src={Art4}
+            alt="art"
+            style={{ width: "100%", height: "auto", maxWidth: 400 }}
+          />
         </Grid>
-        <Grid item lg={6} ref={ref6}>
-          <Box sx={{ position: "relactive", m: 10 }}>
+        <Grid
+          item
+          lg={6}
+          ref={ref6}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column",
+          }}
+        >
+          <Box sx={{ position: "relative", m: 10 }}>
             <Typography
               variant="h4"
               style={{ fontWeight: "bold" }}

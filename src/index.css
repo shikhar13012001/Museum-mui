@@ -9,7 +9,9 @@
   padding-left: 10px; /* gutter size */
   background-clip: padding-box;
 }
-
+body{
+  overflow-x: hidden;
+}
 /* Style your items */
 .my-masonry-grid_column > div {
   /* change div to reference your elements you put in <Masonry> */
