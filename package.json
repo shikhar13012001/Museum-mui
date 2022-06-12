@@ -48,7 +48,7 @@
     "react-video-scroll": "^1.0.1",
     "responsive-navbar-react": "^1.2.1",
     "styled-components": "^5.3.3",
-    "swiper": "^8.2.3",
+    "swiper": "^5.3.6",
     "uuid": "^8.3.2",
     "web-vitals": "^1.1.2"
   },
