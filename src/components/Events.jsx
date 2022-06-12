@@ -29,7 +29,13 @@ const Events = (props) => {
         <Parallax speed={-15}>
           <Typography
             variant="h1"
-            sx={{ textAlign: "center", fontSize: 160 }}
+            fontSize={{
+              xs:100,
+              sm:100,
+              md:120,
+              lg:160
+            }}
+            sx={{ textAlign: "center"}}
             className="animate__animated animate__fadeInUp"
           >
             Built for History

@@ -34,8 +34,10 @@ const Medium = (props) => {
       );
 
       const response = await img.json();
-
-      gallery.push(response);
+      if (response.primaryImage.length > 0) {
+        console.log(response)
+        gallery.push(response);
+      }
     }
 
     setPageResult(gallery);

@@ -89,7 +89,7 @@ const History = (props) => {
           />
           <Typography
             variant="body1"
-            style={{ fontWeight: "500", fontSize: 30 }}
+            style={{ fontWeight: "500", fontSize: 30,textAlign:'justify' }}
           >
             The Louvre Palace, which houses the museum, was begun by King Philip
             II in the late 12th century to protect the city from the attack from
@@ -119,12 +119,12 @@ const History = (props) => {
           </Button>
         </Grid>
       </Grid>
-      <Grid container columns={12} sx={{ mb: 30 }}>
+      <Grid container columns={12} sx={{ mb: 20 }}>
         <Grid item lg={6} ref={ref}>
           <img src={Art2} alt="art" style={{ width: 400, height: "auto" }} />
         </Grid>
         <Grid item lg={6} ref={ref2}>
-          <Box sx={{ position: "relactive", mb: 10 }}>
+          <Box sx={{ position: "relative", m: 10 }}>
             <Typography
               variant="h4"
               style={{ fontWeight: "bold" }}
@@ -141,7 +141,7 @@ const History = (props) => {
       </Grid>
       <Grid container columns={12} sx={{ mb: 30 }} spacing={4}>
         <Grid item lg={6} ref={ref4}>
-          <Box sx={{ position: "relative", mb: 10 }}>
+          <Box sx={{ position: "relative", m: 10 }}>
             <Typography
               variant="h4"
               style={{ fontWeight: "bold" }}
@@ -164,7 +164,7 @@ const History = (props) => {
           <img src={Art4} alt="art" style={{ width: 400, height: "auto" }} />
         </Grid>
         <Grid item lg={6} ref={ref6}>
-          <Box sx={{ position: "relactive", mb: 10 }}>
+          <Box sx={{ position: "relactive", m: 10 }}>
             <Typography
               variant="h4"
               style={{ fontWeight: "bold" }}

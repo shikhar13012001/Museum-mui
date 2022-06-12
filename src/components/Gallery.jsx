@@ -5,6 +5,7 @@ import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 import { withRouter } from "react-router";
 import { Typography } from "@mui/material";
+import Feed from "./Feed";
 function arraysEqual(a, b) {
   if (a === b) return true;
   if (a == null || b == null) return false;
@@ -22,6 +23,7 @@ function arraysEqual(a, b) {
 }
 const Images = (props) => {
   const [images, setImages] = useState([]);
+  const [ImageSet, setImageSet] = useState({});
   const [isLoaded, setIsLoaded] = useState(false);
   const [isExtraLoaded, setIsExtraLoaded] = useState(false);
   const listInnerRef = React.useRef();
@@ -39,10 +41,22 @@ const Images = (props) => {
     setImages([]);
     FetchData();
     // eslint-disable-next-line
+    // clean up
+    return () => {
+      setImages([]);
+      setIsLoaded(false);
+      setIsExtraLoaded(false);
+    };
   }, [props.match.params.id]);
   useEffect(() => {
     FetchData();
     // eslint-disable-next-line
+    // clean up
+    return () => {
+      setImages([]);
+      setIsLoaded(false);
+      setIsExtraLoaded(false);
+    };
   }, []);
   const FetchData = async () => {
     //departments
@@ -58,6 +72,7 @@ const Images = (props) => {
       const data = await res.json();
       let images_collect = [];
       const Promises = [];
+      data.objectIDs = data.objectIDs || [];
       for (let i = 0; i < Math.min(data.objectIDs.length, 30); i++) {
         try {
           Promises.push(
@@ -75,7 +90,13 @@ const Images = (props) => {
         img_data.map((img) => img.json())
       );
       const response = await images_collect_data;
-
+      const setObj = {};
+      console.log(response);
+      response.map((t) => {
+        setObj[t.medium] = setObj[t.medium] || [];
+        setObj[t.medium].push(t);
+      });
+      setImageSet(setObj);
       for (let i = 0; i < response.length; i++) {
         if (!response[i]) {
           continue;
@@ -117,39 +138,50 @@ const Images = (props) => {
       <CircularProgress />
     </Box>
   ) : (
-    <Box
-      sx={{
-        width: "90vw",
-        marginBottom: "1em",
-        position: "relative",
-        height: 250,
-        overflow: "auto",
-      }}
-      onScroll={onScroll}
-      ref={listInnerRef}
-    >
-      {images.length > 0 ? (
-        <Masonry
-          columns={props.columns || { xs: 4, sm: 5, md: 10, lg: 15 }}
-          spacing={{ xs: 1, sm: 2, md: 2 }}
-        >
-          {images.map((item, index) => (
-            <MasonryItem key={index}>
-              <img
-                src={`${item.thumbnail}`}
-                alt={item.title}
-                onClick={(e) => props.history.push(`/artifact/${item.id}`)}
-              />
-            </MasonryItem>
-          ))}
-          {/* {isExtraLoaded?null:<CircularProgress />} */}
-        </Masonry>
-      ) : (
-        <Typography variant="h6" color="textSecondary" align="center">
-          No Images Found
-        </Typography>
+    <React.Fragment>
+      <Box
+        sx={{
+          width: "90vw",
+          marginBottom: "1em",
+          position: "relative",
+          height: 250,
+          overflow: "auto",
+        }}
+        onScroll={onScroll}
+        ref={listInnerRef}
+      >
+        {images.length > 0 ? (
+          <Masonry
+            columns={props.columns || { xs: 4, sm: 5, md: 10, lg: 15 }}
+            spacing={{ xs: 1, sm: 2, md: 2 }}
+          >
+            {images.map((item, index) => (
+              <MasonryItem key={index}>
+                <img
+                  src={`${item.thumbnail}`}
+                  alt={item.title}
+                  onClick={(e) => props.history.push(`/artifact/${item.id}`)}
+                />
+              </MasonryItem>
+            ))}
+            {/* {isExtraLoaded?null:<CircularProgress />} */}
+          </Masonry>
+        ) : (
+          <Typography variant="h6" color="textSecondary" align="center">
+            No Images Found
+          </Typography>
+        )}
+      </Box>
+      {images.length > 0 && (
+        <>
+          {" "}
+          <Typography variant="h6" color="textPrimary" align="center">
+            More Art works by {props.name}
+          </Typography>
+          <Feed ImageSet={ImageSet} />
+        </>
       )}
-    </Box>
+    </React.Fragment>
   );
 };
 
