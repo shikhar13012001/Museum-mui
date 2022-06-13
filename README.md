@@ -77,40 +77,54 @@ This project is an effort to preserve the art and craft o the history </p>
 `/` `Home Route`
 
 ![](https://i.ibb.co/yQc4d4p/Screenshot-88.png)
-![Home](https://i.ibb.co/jH0rJvn/Screenshot-81.png)
-![](https://i.ibb.co/fMfSGD7/Screenshot-82.png)
-![](https://i.ibb.co/tD5cpXP/Screenshot-83.png)
-![](https://i.ibb.co/rvbhwf1/Screenshot-84.png)
-![](https://i.ibb.co/WWWG4dx/Screenshot-85.png)
+![](https://i.ibb.co/bzhBySD/Screenshot-118.png)
+![](https://i.ibb.co/Kw0RLv1/Screenshot-119.png)
+![](https://i.ibb.co/JkvJ9wG/Screenshot-120.png)
+![](https://i.ibb.co/DMSkM11/Screenshot-121.png)
+![](https://i.ibb.co/Z2LyLP6/Screenshot-122.png)
+![](https://i.ibb.co/zndzx4L/Screenshot-123.png)
+![](https://i.ibb.co/hCgqWTC/Screenshot-124.png)
 
 ---
 
 `/profile` ` User Profile Route`
 ![](https://i.ibb.co/6Wrm5rg/Screenshot-86.png)
 
-`/atrists` ` Major artists route`
-![](https://i.ibb.co/9t3fcPR/Screenshot-87.png)
+`/artists` ` Major artists route`
+
+![](https://i.ibb.co/5kgVGCs/Screenshot-125.png)
+![](https://i.ibb.co/5n64sGG/Screenshot-126.png)
 
 `/artist/:id` `Individual artist route`
-![](https://i.ibb.co/4Kn19D7/Screenshot-89.png)
-![](https://i.ibb.co/0mp4pm7/Screenshot-90.png)
+![](https://i.ibb.co/pyRBrpt/Screenshot-139.png)
+![](https://i.ibb.co/jzF9FXF/Screenshot-140.png)
+![](https://i.ibb.co/zQ5Dnwn/Screenshot-141.png)
+![](https://i.ibb.co/16v8k18/Screenshot-142.png)
 
 `/explore` ` Route to display explorable artifacts`
-![](https://i.ibb.co/1mJ46rK/Screenshot-91.png)
-![](https://i.ibb.co/JCHKWmY/Screenshot-92.png)
+![](https://i.ibb.co/jWS8DP1/Screenshot-127.png)
+![](https://i.ibb.co/4RjS0F0/Screenshot-128.png)
 `/explore/:id` ` individual explore page`
-![](https://i.ibb.co/NxZFrLJ/Screenshot-94.png)
+![](https://i.ibb.co/5FBgZTd/Screenshot-130.png)
+![](https://i.ibb.co/85VgcWD/Screenshot-131.png)
 `/artifact/:id` `individual artifact and details`
-![](https://i.ibb.co/tXfPsj1/Screenshot-95.png)
-![](https://i.ibb.co/GWs0J6v/Screenshot-96.png)
-`/explore` `Search feature for artist and or artifacts`
-![](https://i.ibb.co/pxgMyw6/Screenshot-97.png)
+
+![](https://i.ibb.co/Thjzx5F/Screenshot-132.png)
+![](https://i.ibb.co/b7DF279/Screenshot-133.png)
+![](https://i.ibb.co/nnGdBcS/Screenshot-134.png)
+![](https://i.ibb.co/FsPRyHV/Screenshot-135.png)
+![](https://i.ibb.co/F0VJZr0/Screenshot-136.png)
 
 #### Other component
 
 ##### Loading Screen display
 
 ## ![](https://i.ibb.co/bzPypTJ/Screenshot-93.png)
+
+#### Login and Sign up
+
+![](https://i.ibb.co/DCS3Pqn/Screenshot-137.png)
+![](https://i.ibb.co/JtLw1H0/Screenshot-138.png)
 
 ### Backend
 

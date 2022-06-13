@@ -30,12 +30,12 @@ const Events = (props) => {
           <Typography
             variant="h1"
             fontSize={{
-              xs:100,
-              sm:100,
-              md:120,
-              lg:160
+              xs: 100,
+              sm: 100,
+              md: 120,
+              lg: 160,
             }}
-            sx={{ textAlign: "center"}}
+            sx={{ textAlign: "center" }}
             className="animate__animated animate__fadeInUp"
           >
             Built for History

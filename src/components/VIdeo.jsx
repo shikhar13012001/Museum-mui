@@ -14,7 +14,7 @@ import { curveText } from "curvetext";
 
 const style = {
   fontFamily: "'Vujahday Script', cursive",
-  fontWeight: 100, 
+  fontWeight: 100,
   marginBottom: "1em",
 };
 
@@ -100,10 +100,10 @@ const History = (props) => {
           <Typography
             variant="body1"
             fontSize={{
-              xs:18,
-              sm:20,
-              md:24,
-              lg:30,
+              xs: 18,
+              sm: 20,
+              md: 24,
+              lg: 30,
             }}
             style={{ fontWeight: "500", textAlign: "justify" }}
           >

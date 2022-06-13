@@ -35,7 +35,7 @@ const Medium = (props) => {
 
       const response = await img.json();
       if (response.primaryImage.length > 0) {
-        console.log(response)
+        console.log(response);
         gallery.push(response);
       }
     }

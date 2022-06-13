@@ -65,22 +65,22 @@ const Feed = (props) => {
                         justifyContent: "center",
                       }}
                     >
-                        <Stack
-                          sx={{
-                            width: "90%",
-                            display: "flex",
-                            flexDirection: "column",
-                            justifyContent: "space-between",
-                          }}
-                        >
-                          <img
-                            src={item.primaryImage}
-                            alt="highlight"
-                            style={{ width: "100%", height: "auto" }}
-                          />
+                      <Stack
+                        sx={{
+                          width: "90%",
+                          display: "flex",
+                          flexDirection: "column",
+                          justifyContent: "space-between",
+                        }}
+                      >
+                        <img
+                          src={item.primaryImage}
+                          alt="highlight"
+                          style={{ width: "100%", height: "auto" }}
+                        />
 
-                          <Details artifact={item} />
-                        </Stack>
+                        <Details artifact={item} />
+                      </Stack>
                     </Grid>
                   </React.Fragment>
                 );
